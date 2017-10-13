@@ -20,6 +20,8 @@
     "express": "^4.16.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-google-maps": "^8.5.0",
+    "recompose": "^0.26.0",
     "webpack": "^2.7.0",
     "webpack-dev-middleware": "^1.12.0"
   }
