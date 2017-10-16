@@ -7,7 +7,7 @@ class SwimFilters extends React.Component {
     filter[field] = e.target.value;
     this.props.onFiltersChanged(filter);
   }
-
+  
   render(){
     var filters = this.props.filters;
     var divStyle = {padding:20, border: 'solid 1px', margin: 10};  
