@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
-import SwimTable from './SwimTable';
-import SwimFilters from './SwimFilters';
+import CompetitionTableComponent from './CompetitionTableComponent';
+import FiltersContainer from './FiltersContainer';
 import SwimMap from './SwimMap';
 
 class SwimApp extends React.Component {
@@ -53,13 +53,13 @@ class SwimApp extends React.Component {
   render(){
     return(
       <div style={{height: '100%', overflow: 'hidden'}}>
-        <SwimFilters onFiltersChanged={(e) => this.onFiltersChanged(e)} />
+        <FiltersContainer onFiltersChanged={(e) => this.onFiltersChanged(e)} />
         <hr/>
         <div style={{float: 'left', width:'66%', height: '90%'}}>
           <SwimMap data={this.state.displayedData}/>          
         </div>
         <div style={{float: 'right', width:'33%', margin: '0, auto', height: '90%', overflow: 'auto'}}>
-          <SwimTable data={this.state.displayedData}/>
+          <CompetitionTableComponent data={this.state.displayedData}/>
         </div>
       </div>        
     );
