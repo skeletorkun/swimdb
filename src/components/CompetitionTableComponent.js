@@ -8,17 +8,21 @@ const CompetitionComponent = (props) => {
         <h3>{swim.competition}</h3><br/>
         <p>Distance : {swim.distance}</p><br/>
         <p>Location : {swim.location}</p><br/>
-        <p>Date : {swim.date}</p  ><br/>
+        <p>Date : {swim.date}</p><br/>
         <a href={swim.link}>website</a>
       </div>      
   );
 }
     
-const CompetitionTableComponent = (props) => {
-  const listItems = props.data.map((swim) => <li key={swim.id}><CompetitionComponent data={swim}/></li>);        
-  return (
-    <ul style = {{listStyle: 'none', paddingLeft:0 }}>{listItems}</ul>
-  );
+class CompetitionTableComponent extends React.Component {
+  
+    render(){
+      const data = this.props.data || [];
+      const listItems = data.map((swim) => <li key={swim.id}><CompetitionComponent data={swim}/></li>);        
+      return (
+          <ul style = {{listStyle: 'none', paddingLeft:0 }}>{listItems}</ul>
+      );
+    }  
 }
 
 export default CompetitionTableComponent;

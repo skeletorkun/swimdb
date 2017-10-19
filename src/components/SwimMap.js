@@ -34,9 +34,8 @@ const Map = compose(
 );
 
 class SwimMap extends React.Component{
-
   render(){
-    const data = this.props.data || [];
+    const data= this.props.data || [];
     return <Map data={data}/>;
   }
 }

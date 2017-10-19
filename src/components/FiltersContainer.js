@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const FiltersComponent = props => {
 
   const divStyle = {padding:20, border: 'solid 1px', margin: 10};  
@@ -14,7 +13,6 @@ const FiltersComponent = props => {
     </div>
   );
 };
-
 
 class FiltersContainer extends React.Component {
   
