@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const FiltersComponent = props => {
 
@@ -19,7 +20,7 @@ class FiltersContainer extends React.Component {
   handleChange(e, field){
     var filter = {};
     filter[field] = e.target.value;
-    this.props.onFiltersChanged(filter);
+    this.props.updateFilters(filter);
   }
   
   render(){    
@@ -27,6 +28,10 @@ class FiltersContainer extends React.Component {
       <FiltersComponent onChange={this.handleChange.bind(this)}/>
     );
   }
+}
+
+FiltersContainer.propTypes = {
+  updateFilters : PropTypes.func.isRequired
 }
 
 export default FiltersContainer;

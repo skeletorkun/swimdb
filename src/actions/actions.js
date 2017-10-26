@@ -1,6 +1,4 @@
-export const updateFilters = filters => {
-    return {
+export const updateFilters = filters => ({
         type : 'UPDATE_FILTERS',
         filters
-    }
-}
+});

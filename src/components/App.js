@@ -7,7 +7,7 @@ import SwimApp from './SwimApp'
 function mapStateToProps(state){
     return {
         filters : state.filters,
-        data : state.data
+        filteredData : state.filteredData
     }
 }
 

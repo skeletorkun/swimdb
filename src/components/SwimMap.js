@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer"
 
 const Map = compose(
   withProps({
@@ -35,9 +36,14 @@ const Map = compose(
 
 class SwimMap extends React.Component{
   render(){
-    const data= this.props.data || [];
+    const data= this.props.filteredData || [];
     return <Map data={data}/>;
   }
+}
+
+SwimMap.propTypes = {
+  filteredData : PropTypes.array.isRequired,
+  updateFilters : PropTypes.func.isRequired
 }
 
 export default SwimMap;

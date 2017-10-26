@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const CompetitionComponent = (props) => {
   var divStyle = {padding:20, border: 'solid 1px', margin: 10};
@@ -17,12 +18,17 @@ const CompetitionComponent = (props) => {
 class CompetitionTableComponent extends React.Component {
   
     render(){
-      const data = this.props.data || [];
+      const data = this.props.filteredData || [];
       const listItems = data.map((swim) => <li key={swim.id}><CompetitionComponent data={swim}/></li>);        
       return (
           <ul style = {{listStyle: 'none', paddingLeft:0 }}>{listItems}</ul>
       );
     }  
+}
+
+CompetitionTableComponent.propTypes = {
+  filteredData : PropTypes.array.isRequired,
+  updateFilters : PropTypes.func.isRequired
 }
 
 export default CompetitionTableComponent;
