@@ -16,13 +16,16 @@ const filterReducer = (state = [], action) => {
         case 'UPDATE_FILTERS':
             // console.log('filterChanges are propagated ' + JSON.stringify(action.filters)); 
             const newFilters = Object.assign({}, state.filters, action.filters);
-            // console.log('filters are now' + JSON.stringify(newFilters));           
-            const filteredData = getFilteredDataRows(newFilters, state.data);  
+            // console.log('filters are now' + JSON.stringify(newFilters));       
             // console.log('filteredData are now' + JSON.stringify(filteredData));           
-            return { filters : newFilters, data: state.data, filteredData: filteredData}
+            return { filters : newFilters, data: state.data, filteredData: getFilteredDataRows(newFilters, state.data)};
+            
+        case 'DATA_RECEIVED':
+            return {filters : state.filters, data: action.data, filteredData: getFilteredDataRows(state.filters, action.data)};
         default:
             return state
     }
 }
+
 
 export default filterReducer;

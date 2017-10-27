@@ -7,7 +7,7 @@ export const loadState = () => {
             return undefined;
         }
         const state = JSON.parse(serializedState);        
-        console.log('state loaded from local storage ' + serializedState);
+        console.log('state loaded from local storage ');
         return state;
     }
     catch(err){

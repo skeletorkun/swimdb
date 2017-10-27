@@ -5,7 +5,6 @@ import CompetitionTableComponent from './CompetitionTableComponent'
 import FiltersContainer from './FiltersContainer'
 import SwimMap from './SwimMap'
 
-
 class SwimApp extends React.Component {
 
   render(){
@@ -30,12 +29,4 @@ SwimApp.propTypes = {
   updateFilters : PropTypes.func.isRequired
 }
 
-  // componentDidMount(){
-  //   Axios.get("/data")
-  //   .then(json => {      
-  //       console.log('Data loaded ' + json.data)
-  //       this.setState({data : json.data, displayedData: json.data});
-  //   });    
-  // }
-  
 export default SwimApp;
