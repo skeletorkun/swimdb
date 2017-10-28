@@ -1,18 +1,21 @@
 import data from './../../data/data';
 
+export const DATA_RECEIVED = 'DATA_RECEIVED';
+export const UPDATE_FILTERS = 'UPDATE_FILTERS';
+
+
 const receiveData = data => ({
-        type: 'RECEIVE_DATA',
+        type: DATA_RECEIVED,
         data
 });
 
 export const fetchData = () => {
         console.log('fetching data');
-        const startingState = {filters: {}, data: data, filteredData: data};
-        return receiveData(startingState);
+        return receiveData(data);
 };
     
 export const updateFilters = filters => ({
-        type : 'UPDATE_FILTERS',
+        type : UPDATE_FILTERS,
         filters
 });
     

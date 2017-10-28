@@ -35,7 +35,7 @@ const addLoggingToDispatch = (store) => {
 
 const configureStore = () => {
 
-    const startingState = loadState() || fetchData();
+    const startingState = loadState() || {filters: {}, data: [], filteredData: []};
     
     const store = createStore(filterReducer, startingState);
     
@@ -43,7 +43,7 @@ const configureStore = () => {
         store.dispatch = addLoggingToDispatch(store);
     }
     
-    store.dispatch = addPromiseSupportToDispatch(store.dispatch);
+    store.dispatch = addPromiseSupportToDispatch(store);
     
     store.subscribe(throttle(()=>{
         saveState({
