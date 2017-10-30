@@ -1,50 +1,25 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware} from 'redux'
+import { createLogger } from 'redux-logger'
+import promise from 'redux-promise'
 import filterReducer from './reducers/filterReducer'
 import { saveState, loadState } from './localStorage'
 import throttle  from 'lodash/throttle'
 
-const addPromiseSupportToDispatch = (store) => {
-    const rawDispatch = store.dispatch;
-    return (action) => {
-        
-        // check if the action is a promise
-        if(typeof action.then === 'function'){
-            return action.then(rawDispatch);
-        }
-        return rawDispatch(action);
-    }
-}
-
-const addLoggingToDispatch = (store) => {
-    const rawDispatch = store.dispatch;
-
-    if(!console.group){
-        return rawDispatch;
-    }
-
-    return (action) => {
-        console.group(action.type);
-        console.log('%c prev state', 'color:gray', store.getState());
-        console.log('%c action', 'color:blue', action);
-        const returnValue = rawDispatch(action);
-        console.log('%c next state', 'color:green',store.getState());
-        console.groupEnd(action.type);
-        return returnValue;
-    }
-}
-
 const configureStore = () => {
 
     const startingState = loadState() || {filters: {}, data: [], filteredData: []};
-    
-    const store = createStore(filterReducer, startingState);
-    
+
+    const middlewares = [promise];
     if(process.env.NODE_ENV !== 'production'){
-        store.dispatch = addLoggingToDispatch(store);
+        middlewares.push(createLogger());
     }
-    
-    store.dispatch = addPromiseSupportToDispatch(store);
-    
+
+    const store = createStore(
+        filterReducer, 
+        startingState, 
+        applyMiddleware(...middlewares)
+    )
+    ;
     store.subscribe(throttle(()=>{
         saveState({
             data: store.getState().data,

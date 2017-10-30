@@ -1,3 +1,4 @@
+import api from '../api'
 import data from './../../data/data';
 
 export const DATA_RECEIVED = 'DATA_RECEIVED';
@@ -10,11 +11,14 @@ const receiveData = data => ({
 });
 
 export const fetchData = () => {
-        console.log('fetching data');
-        return receiveData(data);
+        // api.fetchData().then(response => {
+        //         console.log('fetched data');
+        //         return receiveData(response);
+        // });   
+        return  receiveData(data);     
 };
     
-export const updateFilters = filters => ({
+export const updateFilters = (filters) => ({
         type : UPDATE_FILTERS,
         filters
 });
