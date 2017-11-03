@@ -2,7 +2,6 @@ const express = require('express');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
-const dataset = require('./data/data');
 const app = express();
 
 const compiler = webpack(webpackConfig);
@@ -25,29 +24,5 @@ const server = app.listen(3000, function() {
   console.log('Example app listening at http://%s:%s', host, port);
 });
 
-/* GET data from file */
-app.get('/data', function(req, res, next) {
-  res.json(dataset);
-});
 
-var count = dataset.length;
-app.post('/add', function(req, res, next) {
-  console.log('would normall add this to the db ' + req);
-  res.json({
-    "id":  ++count,
-    "competition": "Mariestad",
-    "distance": 2700,
-    "date": "16-Jun-2018",
-    "location": "Shanshi",
-    "link": "http://ifeng.com/ridiculus/mus/vivamus/vestibulum/sagittis/sapien.xml?commodo=vestibulum&placerat=eget&praesent=vulputate&blandit=ut&nam=ultrices&nulla=vel&integer=augue",
-    "longitude": 13.8508024,
-    "latidute": 58.6701908
-  });
-  // db.collection('quotes').save(req.body, (err, result) => {
-  //   if (err) return console.log(err)
-
-  //   console.log('saved to database')
-  //   res.redirect('/')
-  // })
-});
 

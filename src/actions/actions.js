@@ -1,4 +1,3 @@
-import axios from 'axios'
 export const DATA_RECEIVED = 'DATA_RECEIVED';
 export const UPDATE_FILTERS = 'UPDATE_FILTERS';
 export const DATA_ADDED = 'DATA_ADDED';
@@ -18,16 +17,20 @@ const addData = (data) => ({
         data
 });
     
-export const fetchData = () => (dispatch, getStore) => {        
-        return axios.get('/data').then((response) => {
-                console.log('Success in ajax call. Fetched data');
-                dispatch(receiveData(response.data));
+export const fetchData = () => (dispatch, getState, getFirebase) => {   
+        const rootRef  = getFirebase().database().ref().child('data');
+        rootRef.once('value', (response) => {        
+                console.log('Success in firebase call. Fetched data');
+                dispatch(receiveData(response.val()));
+        }, 
+        (error) => {
+                console.error(error);
         });
 };
 
-export const addSwim = () => (dispatch) => {
-        return axios.post('/add', {}).then((response) => {
-                console.log('Success in ajax call. Added a new Swim ' + response.data);
+export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
+        return firebase.push('/add', swim).then((response) => {
+                console.log('Success in firebase call. Added a new Swim ' + response.data);
                 dispatch(addData(response.data));
         })
 }

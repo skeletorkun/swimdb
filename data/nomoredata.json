@@ -1,4 +1,4 @@
-[{
+{ "data" : [{
   "id": 1,
   "competition": "Guatire swim",
   "distance": 2300,
@@ -89,3 +89,4 @@
   "longitude": 88.880492,
   "latitude": 29.270311
 }]
+}

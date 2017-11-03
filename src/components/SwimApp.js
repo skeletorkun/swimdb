@@ -11,7 +11,7 @@ class SwimApp extends React.Component {
     return (
       <div style={{height: '100%', overflow: 'hidden'}}>
         <FiltersContainer {...this.props}/>
-        <button onClick = { this.props.addSwim }> AddNewSwim </button>
+        {/* <button onClick = { this.props.addSwim }> AddNewSwim </button> */}
         <hr/>
         <div style={{float: 'left', width:'66%', height: '90%'}}>
           <SwimMap {...this.props}/>          

@@ -1,31 +1,29 @@
-import { createStore, applyMiddleware} from 'redux'
+import { createStore, applyMiddleware, compose} from 'redux'
 import { createLogger } from 'redux-logger'
+import firebase from 'firebase'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
-import { saveState, loadState } from './localStorage'
-import throttle  from 'lodash/throttle'
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import { fbConfig, rrfConfig } from './config'
 
-const configureStore = () => {
+const configureStore = (initialState = {}) => {
 
-    const startingState = loadState() || {filters: {}, data: []};
+    firebase.initializeApp(fbConfig);
+    console.log('Firebase initialized');
 
-    const middlewares = [thunk];
+    const middlewares = [thunk.withExtraArgument(getFirebase)];
     if(process.env.NODE_ENV !== 'production'){
         middlewares.push(createLogger());
     }
-
+    
     const store = createStore(
         rootReducer, 
-        startingState, 
-        applyMiddleware(...middlewares)
-    )
-    ;
-    store.subscribe(throttle(()=>{
-        saveState({
-            data: store.getState().data,
-            filters: {} //ignore
-        });
-    }, 1000));
+        initialState,
+        compose(
+            applyMiddleware(...middlewares),
+            reactReduxFirebase(firebase, rrfConfig)
+        )
+    );
 
     return store;
 }

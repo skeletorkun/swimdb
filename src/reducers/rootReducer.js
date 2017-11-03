@@ -1,5 +1,6 @@
 import {UPDATE_FILTERS, DATA_RECEIVED, DATA_ADDED} from '../actions/actions'
 import { combineReducers } from 'redux'
+import { firebaseStateReducer } from 'react-redux-firebase'
 
 export const getFilteredDataRows = (data, filters) => {
     console.log('getFilteredDataRows ' + JSON.stringify(filters));
@@ -36,8 +37,9 @@ export const filters = (filters = {}, action) => {
 }
 
 const rootReducer = combineReducers({
+    firebase: firebaseStateReducer,
     filters: filters,
-    data: swims,    
+    data: swims,
 });
 
 export default rootReducer;
