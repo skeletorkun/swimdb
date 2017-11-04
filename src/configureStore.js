@@ -4,7 +4,7 @@ import firebase from 'firebase'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
-import { fbConfig, rrfConfig } from './config'
+import { fbConfig, rrfConfig } from './firebase'
 
 const configureStore = (initialState = {}) => {
 

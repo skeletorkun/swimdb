@@ -1,5 +1,4 @@
 import React from 'react'
-import Axios from 'axios'
 import PropTypes from 'prop-types'
 import CompetitionTableComponent from './CompetitionTableComponent'
 import FiltersContainer from './FiltersContainer'
