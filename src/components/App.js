@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import SwimApp from './SwimApp'
 import * as actionCreators from './../actions/actions'
-import { getFilteredDataRows } from './../reducers/rootReducer'
+import { getFilteredDataRows } from './../reducers/mainReducer'
 
 class App extends Component{
 

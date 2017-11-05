@@ -30,8 +30,17 @@ export const fetchData = () => (dispatch, getState, getFirebase) => {
 };
 
 export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
-        // return firebase.push('/add', swim).then((response) => {
-                // console.log('Success in firebase call. Added a new Swim ' + response.data);
-        //         dispatch(addData(response.data));
-        // })
+        const dataRef  = getFirebase().database().ref().child('data');
+        var newSwimRef = dataRef.push();
+        newSwimRef.set({
+                "competition" : "Orkun swim",
+                "date" : "05-Jan-2018",
+                "distance" : 2300,
+                "id" : 1,
+                "latitude" : 10.4597466,
+                "link" : "http://ucoz.com/tellus/nulla/ut/erat.aspx?hac=sapien&habitasse=in&platea=sapien&dictumst=iaculis&aliquam=congue&augue=vivamus&quam=metus&sollicitudin=arcu&vitae=adipiscing&consectetuer=molestie&eget=hendrerit&rutrum=at&at=vulputate&lorem=vitae&integer=nisl&tincidunt=aenean&ante=lectus&vel=pellentesque&ipsum=eget&praesent=nunc&blandit=donec&lacinia=quis&erat=orci&vestibulum=eget&sed=orci&magna=vehicula&at=condimentum&nunc=curabitur",
+                "location" : "AAA",
+                "longitude" : -66.5581092
+        });
+        console.log('Success in firebase call. Added a new Swim ' + newSwimRef);        
 }
