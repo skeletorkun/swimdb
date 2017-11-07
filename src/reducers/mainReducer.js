@@ -5,7 +5,12 @@ export const getFilteredDataRows = (data, filters) => {
     const distanceMin = parseInt(filters.distanceMin) || 0;
     const distanceMax = parseInt(filters.distanceMax) || 9999999999;
     const location = filters.location || '';
-    var values = Object.values(data);
+
+    var values = []
+    for(var key in data){
+        values.push({...data[key], id: key});
+    };
+
     return (
         values
         .filter((swim) => swim.location.toLowerCase().includes(location.toLowerCase()))
@@ -18,11 +23,6 @@ export const swims = (data = {}, action) => {
     switch(action.type){
         case DATA_RECEIVED:
             return action.data;
-        case DATA_ADDED:
-            return {
-                ...data,
-                [action.id]: action.data
-            };
         default:
             return data;
     }

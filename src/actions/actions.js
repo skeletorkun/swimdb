@@ -11,15 +11,10 @@ export const updateFilters = (filters) => ({
         type : UPDATE_FILTERS,
         filters
 });
-
-const addData = (data) => ({
-        type : DATA_ADDED,
-        data
-});
     
 export const fetchData = () => (dispatch, getState, getFirebase) => {   
         const dataRef  = getFirebase().database().ref().child('data');
-        dataRef.once('value', 
+        dataRef.on('value', 
                 (response) => {        
                         console.log('Success in firebase call. Fetched data');
                         dispatch(receiveData(response.val()));
@@ -37,5 +32,5 @@ export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
                 "link" : "http://ucoz.com/tellus/nulla/ut/erat.aspx?hac=sapien&habitasse=in&platea=sapien&dictumst=iaculis&aliquam=congue&augue=vivamus&quam=metus&sollicitudin=arcu&vitae=adipiscing&consectetuer=molestie&eget=hendrerit&rutrum=at&at=vulputate&lorem=vitae&integer=nisl&tincidunt=aenean&ante=lectus&vel=pellentesque&ipsum=eget&praesent=nunc&blandit=donec&lacinia=quis&erat=orci&vestibulum=eget&sed=orci&magna=vehicula&at=condimentum&nunc=curabitur",                
                 "longitude" : -66.5581092
         });
-        console.log('Success in firebase call. Added a new Swim ' + newSwimRef);
+        console.log('Success in firebase call. Added a new Swim ' + newSwimRef);        
 }
