@@ -8,6 +8,7 @@ class AddNewSwimFormComponent extends Component {
 
     handleSubmit = (swim) => {
         this.props.addSwim(swim);
+        this.props.history.push('/');
     }
 
     render = () => {
@@ -16,6 +17,20 @@ class AddNewSwimFormComponent extends Component {
                 <div className="field">
                     <label>Competition</label>
                     <Control.text model=".competition" placeholder="Competition Name" />
+                </div>
+                <div className="field">
+                    <label>Date</label>
+                    <Control.text model=".date" placeholder="Date" defaultValue="05-Jun-2018"/>
+                </div>
+                
+                <div className="field">
+                    <label>Distance</label>
+                    <Control.text model=".distance" placeholder="Distance" defaultValue="3500"/>
+                </div>
+                
+                <div className="field">
+                    <label>Location</label>
+                    <Control.text model=".location" placeholder="Location" />
                 </div>
                 
                 <button type="submit">

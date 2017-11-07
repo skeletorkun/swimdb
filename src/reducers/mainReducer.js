@@ -14,12 +14,15 @@ export const getFilteredDataRows = (data, filters) => {
     );
 }
 
-export const swims = (data = [], action) => {
+export const swims = (data = {}, action) => {
     switch(action.type){
         case DATA_RECEIVED:
             return action.data;
         case DATA_ADDED:
-            return [...data, action.data];
+            return {
+                ...data,
+                [action.id]: action.data
+            };
         default:
             return data;
     }
@@ -29,7 +32,7 @@ export const filters = (filters = {}, action) => {
     switch(action.type){
         case UPDATE_FILTERS:
             const newFilters = Object.assign({}, filters, action.filters);
-            return newFilters ;            
+            return newFilters;            
         default:
             return filters;
     }
