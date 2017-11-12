@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer"
 
 const Map = compose(
@@ -11,7 +11,6 @@ const Map = compose(
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
-  withScriptjs,
   withGoogleMap
 )((props) =>
   
@@ -27,7 +26,7 @@ const Map = compose(
       {props.data.map(swim => (
         <Marker
           key={swim.id}
-          position={{ lat: parseFloat(swim.latitude), lng:parseFloat(swim.longitude) }}
+          position={{ lat: parseFloat(swim.location.latitude), lng:parseFloat(swim.location.longitude) }}
         />
       ))}
     </MarkerClusterer>

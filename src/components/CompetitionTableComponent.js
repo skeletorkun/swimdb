@@ -8,7 +8,7 @@ const CompetitionComponent = (props) => {
       <div style={divStyle}>          
         <h3>{swim.competition}</h3><br/>
         <p>Distance : {swim.distance}</p><br/>
-        <p>Location : {swim.location}</p><br/>
+        <p>Location : {swim.location.formatted_address}</p><br/>
         <p>Date : {swim.date}</p><br/>
         <a href={swim.link}>website</a>
       </div>      

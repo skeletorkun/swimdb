@@ -1,9 +1,15 @@
-import {UPDATE_FILTERS, DATA_RECEIVED, DATA_ADDED} from '../actions/actions'
+import {UPDATE_FILTERS, DATA_RECEIVED} from '../actions/actions'
+
+const countryFilter = (swimLocation, value) =>{
+    
+    return swimLocation.toLowerCase().includes(value.toLowerCase());
+}
+
 
 export const getFilteredDataRows = (data, filters) => {
     console.log('getFilteredDataRows ' + JSON.stringify(filters));
-    const distanceMin = parseInt(filters.distanceMin) || 0;
-    const distanceMax = parseInt(filters.distanceMax) || 9999999999;
+    const distanceMin = parseInt(filters.distanceMin, 10) || 0;
+    const distanceMax = parseInt(filters.distanceMax, 10) || 9999999999;
     const location = filters.location || '';
 
     var values = []
@@ -13,7 +19,7 @@ export const getFilteredDataRows = (data, filters) => {
 
     return (
         values
-        .filter((swim) => swim.location.toLowerCase().includes(location.toLowerCase()))
+        .filter((swim) => countryFilter(swim.location.country, location))
         .filter((swim) => swim.distance > distanceMin)
         .filter((swim) => swim.distance < distanceMax)
     );
