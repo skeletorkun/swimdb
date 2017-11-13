@@ -1,13 +1,16 @@
 import { combineReducers } from 'redux'
 import { firebaseStateReducer } from 'react-redux-firebase'
-import { filters, swims } from './mainReducer'
+import { filterReducer } from './filterReducer'
+import { dataReducer } from './dataReducer'
 import { formReducer } from './formReducer'
+import { cardReducer } from './cardReducer'
 
 const rootReducer = combineReducers({
     firebase: firebaseStateReducer,
-    filters: filters,
-    data: swims,
+    filters: filterReducer,
+    data: dataReducer,
     form: formReducer,
+    selectedId: cardReducer
 });
 
 export default rootReducer;

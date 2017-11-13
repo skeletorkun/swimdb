@@ -1,6 +1,7 @@
 export const DATA_RECEIVED = 'DATA_RECEIVED';
 export const UPDATE_FILTERS = 'UPDATE_FILTERS';
 export const DATA_ADDED = 'DATA_ADDED';
+export const CARD_SELECTED = 'CARD_SELECTED';
 
 const receiveData = (data) => ({
         type: DATA_RECEIVED,
@@ -31,3 +32,8 @@ export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
         newSwimRef.set(swim);
         console.log('Success in firebase call. Added a new Swim ' + newSwimRef);        
 }
+
+export const selectCard = (id) =>({
+        type: CARD_SELECTED,
+        id : id
+});

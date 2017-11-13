@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import SwimApp from './SwimApp'
 import * as actionCreators from './../actions/actions'
-import { getFilteredDataRows } from './../reducers/mainReducer'
+import { getFilteredDataRows } from './../reducers/dataReducer'
 
 class App extends Component{
 
@@ -19,7 +19,8 @@ class App extends Component{
 function mapStateToProps(state){
     return {
         filters : state.filters,
-        filteredData : getFilteredDataRows(state.data, state.filters)
+        filteredData : getFilteredDataRows(state.data, state.filters),
+        selectedId : state.selectedId
     }
 }
 
