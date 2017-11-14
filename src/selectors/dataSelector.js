@@ -1,4 +1,3 @@
-import { DATA_RECEIVED } from '../actions/actions'
 
 const countryFilter = (swimLocation, value) =>{
     
@@ -22,13 +21,4 @@ export const getFilteredDataRows = (data, filters) => {
         .filter((swim) => swim.distance > distanceMin)
         .filter((swim) => swim.distance < distanceMax)
     );
-}
-
-export const dataReducer = (data = {}, action) => {
-    switch(action.type){
-        case DATA_RECEIVED:
-            return action.data;
-        default:
-            return data;
-    }
 }
