@@ -1,4 +1,4 @@
-import {CARD_SELECTED} from '../actions/actions'
+import { CARD_SELECTED } from '../actions/actions'
 
 export const cardReducer = (selectedId = '', action) => {
     switch(action.type){

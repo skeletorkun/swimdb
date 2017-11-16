@@ -6,7 +6,7 @@ import FiltersContainer from './FiltersContainer'
 import UserInfoContainer from './user/UserInfoContainer'
 import SwimMap from './SwimMap'
 
-class SwimApp extends React.Component {
+class MainComponent extends React.Component {
 
   render(){
 
@@ -33,10 +33,10 @@ class SwimApp extends React.Component {
   }     
 }
 
-SwimApp.propTypes = {
+MainComponent.propTypes = {
   filters: PropTypes.object.isRequired,
   filteredData : PropTypes.array.isRequired,
   updateFilters : PropTypes.func.isRequired
 }
 
-export default SwimApp;
+export default MainComponent;

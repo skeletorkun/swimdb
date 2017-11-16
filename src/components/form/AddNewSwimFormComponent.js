@@ -7,7 +7,51 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import LocationAutocompleteComponent, { getCountryFromAddress } from './../autocomplete/LocationAutoCompleteComponent'
 import * as actionCreators from './../../actions/actions'
 
-class AddNewSwimFormComponent extends Component {
+const FormComponent = (props) => {
+
+    const autoComplete = (props) => {
+        return(
+            <LocationAutocompleteComponent {...props} />
+        );
+    };
+
+    return (
+        <Form model="form.swimToAdd" onSubmit={(s) => props.handleSubmit(s)}>
+            <div className="field">
+                <label>Name</label>
+                <Control.text model="swimToAdd.competition" placeholder="" />
+            </div>
+            <div className="field">
+                <label>Date</label>
+                <Control.text model="swimToAdd.date" placeholder="dd/mm/yyyy" />
+            </div>
+            
+            <div className="field">
+                <label>Distance (in meters)</label>
+                <Control.text model="swimToAdd.distance" placeholder="e.g. 3500"/>
+            </div>
+            
+            <div className="field">
+                <label>Location</label>
+                <Control.custom model="swimToAdd.location" component={autoComplete} mapProps={{ onLocationSelected: (props) => props.onChange }}/>
+            </div> 
+            
+            <div className="field">
+                <label>Website</label>
+                <Control.text model="swimToAdd.link" placeholder="Url" />
+            </div> 
+            
+            <button type="submit">
+                Submit
+            </button>
+            <Control.reset model="swimToAdd" className="secondary">
+                Clear Values
+            </Control.reset>
+        </Form>
+    )
+};
+
+class AddNewSwimFormContainer extends Component {
 
     getAddress = (geolocation) => {
         const address = {};
@@ -35,64 +79,20 @@ class AddNewSwimFormComponent extends Component {
         // this.props.history.push('/')
     }
 
-    autoComplete = (props) => {
-        return(
-            <LocationAutocompleteComponent {...props} />
-        );
-    };
-
-    
     render = () => {
-
-        const addNewSwimFormContainer = (props) => {
-            return (
-                <Form model="form.swimToAdd" onSubmit={(s) => this.handleSubmit(s)}>
-                    <div className="field">
-                        <label>Name</label>
-                        <Control.text model="swimToAdd.competition" placeholder="" />
-                    </div>
-                    <div className="field">
-                        <label>Date</label>
-                        <Control.text model="swimToAdd.date" placeholder="dd/mm/yyyy" />
-                    </div>
-                    
-                    <div className="field">
-                        <label>Distance (in meters)</label>
-                        <Control.text model="swimToAdd.distance" placeholder="e.g. 3500"/>
-                    </div>
-                    
-                    <div className="field">
-                        <label>Location</label>
-                        <Control.custom model="swimToAdd.location" component={this.autoComplete} mapProps={{onLocationSelected: (props) => props.onChange }}/>
-                    </div> 
-                    
-                    <div className="field">
-                        <label>Website</label>
-                        <Control.text model="swimToAdd.link" placeholder="Url" />
-                    </div> 
-                    
-                    <button type="submit">
-                        Submit
-                    </button>
-                    <Control.reset model="swimToAdd" className="secondary">
-                        Clear Values
-                    </Control.reset>
-                </Form>
-            )
-        };
-        
+    
         if(!this.props.hasAuth){
             return <Redirect to={{ pathname: '/login', state: { from: this.props.location }}}/>
         }
         else{
-            return addNewSwimFormContainer(this.props);
+            return <FormComponent {...this.props} handleSubmit={ this.handleSubmit } />;
         }
         
     };
 }
 
 // add firebase
-AddNewSwimFormComponent = firebaseConnect()(AddNewSwimFormComponent);
+AddNewSwimFormContainer = firebaseConnect()(AddNewSwimFormContainer);
 
 function mapStateToProps(state){
     const auth = state.firebase.auth;
@@ -107,6 +107,6 @@ function mapDispatchToProps(dispatch){
 }
 
 // enrich and reassign
-AddNewSwimFormComponent = connect(mapStateToProps, mapDispatchToProps)(AddNewSwimFormComponent)
+AddNewSwimFormContainer = connect(mapStateToProps, mapDispatchToProps)(AddNewSwimFormContainer)
 
-export default AddNewSwimFormComponent;
+export default AddNewSwimFormContainer;

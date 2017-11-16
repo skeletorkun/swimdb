@@ -4,8 +4,8 @@ import { isLoaded, isEmpty } from 'react-redux-firebase'
 
 const UserDetails = (props) => (
     <div> 
-        <p> { props.auth.displayName }</p>
-        <img alt='' src={props.auth.photoURL} width='50px'/>        
+        <p> { props.profile.displayName }</p>
+        <img alt='' src={props.profile.avatarUrl} width='50px'/>        
     </div>
 );
 

@@ -3,11 +3,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
-import SwimApp from './SwimApp'
+import MainComponent from './MainComponent'
 import * as actionCreators from './../actions/actions'
 import { getFilteredDataRows } from './../selectors/dataSelector'
 
-class App extends Component{
+class AppContainer extends Component{
 
     static propTypes = {
         data: PropTypes.object,
@@ -15,16 +15,18 @@ class App extends Component{
     }
 
     render(){
-        return <SwimApp {...this.props}/>;
+        return <MainComponent {...this.props}/>;
     }
 }
 
 function mapStateToProps(state){
-    const data = state.firebase.data.data;
-    const auth = state.firebase.auth;
+    
+    const fb = state.firebase;
+    const data = fb.data.data;    
+    const auth = fb.auth;
     return {
-        auth: auth,
-        profile: state.firebase.profile,
+        auth: auth,        
+        profile: fb.profile,
         filters : state.filters,
         filteredData : getFilteredDataRows(data, state.filters),
         selectedId : state.selectedId,
@@ -39,11 +41,11 @@ function mapDispatchToProps(dispatch){
 }
 
 // enrich and reassign with Firebase
-App = firebaseConnect([
+AppContainer = firebaseConnect([
     'data'
-])(App)
+])(AppContainer)
 
 // enrich and reassign
-App = connect(mapStateToProps, mapDispatchToProps)(App)
+AppContainer = connect(mapStateToProps, mapDispatchToProps)(AppContainer)
 
-export default App;
+export default AppContainer;

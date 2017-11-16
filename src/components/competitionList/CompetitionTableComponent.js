@@ -23,6 +23,7 @@ class CompetitionTableComponent extends React.Component {
             data={swim} 
             isSelected= { swim.id === selectedId}
             selectCard = { this.props.selectCard }
+            deleteCard = { this.props.deleteCard }
           />
         </li>
       );        
