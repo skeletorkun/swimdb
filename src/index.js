@@ -7,20 +7,29 @@ import LoginComponent from './components/user/LoginContainer'
 import AddNewSwimFormComponent from './components/form/AddNewSwimFormComponent'
 import configureStore from './configureStore'
 import registerServiceWorker from './registerServiceWorker'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './index.css'
+
+// Material UI
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 const store = configureStore();
 
 document.addEventListener('DOMContentLoaded', function() {
-   render(
+   render(     
     <Provider store={ store }>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/' component={ AppContainer }/>
-          <Route exact path='/login' component={ LoginComponent }/>
-          <Route path='/add' component={ AddNewSwimFormComponent }/>
-        </Switch>
-      </BrowserRouter>
+      <MuiThemeProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/' component={ AppContainer }/>
+            <Route exact path='/login' component={ LoginComponent }/>
+            <Route path='/add' component={ AddNewSwimFormComponent }/>
+          </Switch>
+        </BrowserRouter>
+      </MuiThemeProvider>
     </Provider>,
     document.getElementById('root')
   );

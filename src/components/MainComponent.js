@@ -13,12 +13,13 @@ class MainComponent extends React.Component {
     return (
       <div style={{height: '100%', overflow: 'hidden'}}>              
         <div style={{width:'100%', height: '10%'}}>
-          <div style={{float: 'left', width:'66%'}}>
+          <div style={{float: 'left', width:'75%'}}>
             <FiltersContainer  {...this.props}/>
           </div>
-          <div style={{float: 'right', width:'33%'}}>
-            <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>                       
+          <div style={{float: 'right', width:'25%'}}>
+            <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>                                 
             <Link to='/add' style={{ margin: '20px 30px', float: 'right' }}> Add New Swim Event </Link>
+            
           </div>
         </div>
         <hr  style={{width:'100%'}}/>

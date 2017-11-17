@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CompetitionCardComponent } from './CompetitionCardComponent'
 
-class CompetitionCard extends Component{
+class CompetitionCardContainer extends Component{
 
     handleClick = () =>{
         console.log('card clicked');
@@ -15,27 +16,18 @@ class CompetitionCard extends Component{
     }
 
     render = () =>{
-        const color = this.props.isSelected ? '#ffe684' : 'none';
-        var divStyle = {padding:20, border: 'solid 1px', margin: 10, background: color};
         var swim = this.props.data;
         return (
-            <div style={divStyle} onClick={ (e) => this.handleClick(e) }>
-                <button style={{float: 'right' }} onClick={ this.handleDelete }> Delete </button> 
-                <h3>{swim.competition}</h3><br/>
-                <p>Distance : {swim.distance}</p><br/>
-                <p>Location : {swim.location.formatted_address}</p><br/>
-                <p>Date : {swim.date}</p><br/>
-                <a href={swim.link}>website</a>
-            </div>
+            <CompetitionCardComponent swim={swim} {...this.props} handleClick={this.handleClick } handleDelete={this.handleDelete} />
         );
     }
 }
 
-CompetitionCard.propTypes = {
+CompetitionCardContainer.propTypes = {
     data : PropTypes.object.isRequired,
     selectCard : PropTypes.func.isRequired,
     deleteCard : PropTypes.func.isRequired,
     isSelected : PropTypes.bool.isRequired
   }
 
-export default CompetitionCard;
+export default CompetitionCardContainer;

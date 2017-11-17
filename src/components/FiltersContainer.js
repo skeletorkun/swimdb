@@ -14,7 +14,7 @@ const FiltersComponent = props => {
 
   return(
     <div style={divStyle}> 
-      <label style={filterStyle}>Location: </label> <LocationAutocompleteComponent onLocationSelected={(e) => handleLocationSelected(e)}/>      
+      <LocationAutocompleteComponent onLocationSelected={(e) => handleLocationSelected(e)}/>      
       <label style={filterStyle}>Distance Min: </label> <input type="text" onChange={(e) => props.onChange(e.target.value, 'distanceMin')}/>
       <label style={filterStyle}>Distance Max: </label> <input type="text" onChange={(e) => props.onChange(e.target.value, 'distanceMax')}/>      
     </div>
