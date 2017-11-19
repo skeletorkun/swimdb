@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import { Control, Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
-import LocationAutocompleteComponent, { getCountryFromAddress } from './../autocomplete/LocationAutoCompleteComponent'
+import LocationFieldComponent, { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
 import * as actionCreators from './../../actions/actions'
 
 const FormComponent = (props) => {
 
     const autoComplete = (props) => {
         return(
-            <LocationAutocompleteComponent {...props} />
+            <LocationFieldComponent {...props} />
         );
     };
 

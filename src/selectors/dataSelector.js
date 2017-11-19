@@ -6,8 +6,9 @@ const countryFilter = (swimLocation, value) =>{
 
 export const getFilteredDataRows = (data, filters) => {
     console.log('getFilteredDataRows ' + JSON.stringify(filters));
-    const distanceMin = parseInt(filters.distanceMin, 10) || 0;
-    const distanceMax = parseInt(filters.distanceMax, 10) || 9999999999;
+    const [min, max] = filters.distance;
+    const distanceMin = parseInt(min, 10) || 0;
+    const distanceMax = parseInt(max, 10) || 9999999999;
     const location = filters.location || '';
 
     var values = []

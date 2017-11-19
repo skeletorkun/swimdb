@@ -1,5 +1,7 @@
 import React from 'react'
+
 import Paper from 'material-ui/Paper';
+import FlatButton from 'material-ui/FlatButton';
 import './Card.css'
 
 export const CompetitionCardComponent = ( {swim, ...props} ) => {
@@ -8,8 +10,8 @@ export const CompetitionCardComponent = ( {swim, ...props} ) => {
     var divStyle = { background: color, zDepth:2 };
     
     return(
-        <Paper className="Paper" style={ divStyle } onClick={ (e) => props.handleClick(e)} >
-            <button style={{float: 'right' }} onClick={ props.handleDelete }> Delete </button> 
+        <Paper className="card" style={ divStyle } onClick={(e) => props.handleClick(e)} >
+            <FlatButton style={{float: 'right' }} primary={true} onClick={ props.handleDelete }> Delete </FlatButton> 
             <h3>{swim.competition}</h3><br/>
             <p>Distance : {swim.distance}</p><br/>
             <p>Location : {swim.location.formatted_address}</p><br/>

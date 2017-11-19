@@ -1,6 +1,11 @@
 import {UPDATE_FILTERS} from '../actions/actions'
 
-export const filterReducer = (filters = {}, action) => {
+const defaultFilters = {
+    location: '',
+    distance: []
+};
+
+export const filterReducer = (filters = defaultFilters, action) => {
     switch(action.type){
         case UPDATE_FILTERS:
             const newFilters = Object.assign({}, filters, action.filters);
