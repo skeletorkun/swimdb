@@ -1,3 +1,5 @@
-.top-container{
 
+@media screen and (max-width: 1201px) {
+    .swim-map-container { display: none; } 
+    .competition-list-container { width: 100% !important;}
 }

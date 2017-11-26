@@ -2,22 +2,29 @@ import React, { Component } from 'react'
 import { GuestContainer } from './GuestContainer'
 import { isLoaded, isEmpty } from 'react-redux-firebase'
 
-const UserDetails = (props) => (
-    <div> 
-        <p> { props.profile.displayName }</p>
-        <img alt='' src={props.profile.avatarUrl} width='50px'/>        
-    </div>
-);
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import Avatar from 'material-ui/Avatar'
+import {ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
 
 const UserContainer = (props) => {
     
-    const userDetails = UserDetails(props);
     return (
-        <div> 
-            { userDetails }
-            <button onClick={() => props.firebase.logout()}> Sign out</button>
-        </div>
-    )
+        <ToolbarGroup>
+            <ToolbarTitle text={ props.profile.displayName } />
+            <IconMenu
+                {...props}
+                    iconButtonElement={
+                    <Avatar alt='' src={props.profile.avatarUrl} width='50px'/>   
+                }
+                targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                >
+                <MenuItem primaryText="About" />
+                <MenuItem primaryText="Sign out" onClick={() => props.firebase.logout()} />
+            </IconMenu>
+        </ToolbarGroup>                
+    );
 };
 
 class UserInfoContainer extends Component {

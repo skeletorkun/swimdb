@@ -1,0 +1,9 @@
+.filters-container {
+    display: table-row;
+}
+
+.filters-container > div {
+    float: left;;
+    padding-left: 20px;
+    padding-right: 20px;
+}

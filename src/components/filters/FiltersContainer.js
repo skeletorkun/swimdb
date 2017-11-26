@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import LocationFieldComponent, { getCountryFromAddress }  from './../autocomplete/LocationFieldComponent'
 import DistanceSelectComponent from './DistanceSelectComponent'
+import './FiltersContainer.css'
 
 const FiltersComponent = props => {
-
-  const divStyle = {padding:20, margin: 10};  
 
   const handleLocationSelected = (value) => { 
       const country = getCountryFromAddress(value);
@@ -18,9 +17,9 @@ const FiltersComponent = props => {
   }
 
   return(
-    <div style={divStyle}> 
-      <LocationFieldComponent onLocationSelected={handleLocationSelected}/>
-      <DistanceSelectComponent onChange={handleDistanceSelected} style={{float:'right'}}/>
+    <div className='filters-container'> 
+      <LocationFieldComponent onLocationSelected={handleLocationSelected} />
+      <DistanceSelectComponent onChange={handleDistanceSelected} />      
     </div>
   );
 };
