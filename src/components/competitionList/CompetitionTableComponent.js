@@ -22,7 +22,7 @@ class CompetitionTableComponent extends React.Component {
           <CompetitionCardContainer
          
             data={swim} 
-            isSelected= { swim.id === selectedId}
+            isSelected = { swim.id === selectedId}
             selectCard = { this.props.selectCard }
             deleteCard = { this.props.deleteCard }
           />

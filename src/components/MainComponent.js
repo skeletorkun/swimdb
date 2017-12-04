@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom' 
 import CompetitionTableComponent from './competitionList/CompetitionTableComponent'
 import FiltersContainer from './filters/FiltersContainer'
 import UserInfoContainer from './user/UserInfoContainer'
 import SwimMap from './SwimMap'
+import { AddNewLink } from './AddNewLink'
 
 import './Main.css'
-import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
-import Divider from 'material-ui/Divider';
-
+import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
+import Divider from 'material-ui/Divider'
 
 class MainComponent extends React.Component {
   
@@ -28,7 +27,7 @@ class MainComponent extends React.Component {
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>
         <Divider />
-        {/* <Link to='/add' style={{ margin: '20px 30px', float: 'right' }}> Add New Swim Event </Link> */}
+        <AddNewLink/>         
         <FiltersContainer  {...this.props} />
         <div className='swim-map-container' style={mapStyle}>
           <SwimMap {...this.props}/>          

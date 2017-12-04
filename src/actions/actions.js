@@ -13,7 +13,7 @@ export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
         const dataRef = getFirebase().database().ref().child('data');
         var newSwimRef = dataRef.push();
         newSwimRef.set(swim);
-        console.log('Success in firebase call. Added a new Swim ' + newSwimRef);
+        console.log('Success in firebase call. Added a new Swim ' + newSwimRef);        
 }
 
 export const selectCard = (id) => ({

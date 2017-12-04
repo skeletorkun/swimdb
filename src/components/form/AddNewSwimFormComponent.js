@@ -7,6 +7,14 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import LocationFieldComponent, { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
 import * as actionCreators from './../../actions/actions'
 
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
+import Paper from 'material-ui/Paper';
+
 const FormComponent = (props) => {
 
     const autoComplete = (props) => {
@@ -15,39 +23,56 @@ const FormComponent = (props) => {
         );
     };
 
+    const customTextField = (props) => {        
+        return (
+            <TextField
+                hintText={props.hintText}
+                floatingLabelText= {props.floatingLabelText}
+                {...props}
+            />
+        );
+    }
+
+    const customDatePicker = (props) => {
+        
+        const today = new Date();
+        return(
+            <DatePicker
+                floatingLabelText={props.floatingLabelText}
+                disableYearSelection={true}
+                onChange={(first, newDate) => props.onChange(newDate.toLocaleDateString("en-US"))}
+                minDate={today}
+            />
+        )
+    }
+
+    const goBack = () => props.history.push('/');
+
     return (
-        <Form model="form.swimToAdd" onSubmit={(s) => props.handleSubmit(s)}>
-            <div className="field">
-                <label>Name</label>
-                <Control.text model="swimToAdd.competition" placeholder="" />
-            </div>
-            <div className="field">
-                <label>Date</label>
-                <Control.text model="swimToAdd.date" placeholder="dd/mm/yyyy" />
-            </div>
-            
-            <div className="field">
-                <label>Distance (in meters)</label>
-                <Control.text model="swimToAdd.distance" placeholder="e.g. 3500"/>
-            </div>
-            
-            <div className="field">
-                <label>Location</label>
-                <Control.custom model="swimToAdd.location" component={autoComplete} mapProps={{ onLocationSelected: (props) => props.onChange }}/>
-            </div> 
-            
-            <div className="field">
-                <label>Website</label>
-                <Control.text model="swimToAdd.link" placeholder="Url" />
-            </div> 
-            
-            <button type="submit">
-                Submit
-            </button>
-            <Control.reset model="swimToAdd" className="secondary">
-                Clear Values
-            </Control.reset>
-        </Form>
+        <div>
+            <AppBar
+                title={<span >Add New Swim Event</span>}
+                iconElementLeft={<IconButton><NavigationClose onClick={goBack}/></IconButton>}
+            />
+            <Form model="form.swimToAdd" onSubmit={(s) => props.handleSubmit(s)}>
+                <Paper  className={'add-new-swim-form'} style={{margin: '20px', padding: '20px',}}>
+                    <Control model="swimToAdd.competition" component={customTextField} floatingLabelText ="Venue Name"  hintText= "e.g. Swim the Island" /><br/>
+                    <Control model="swimToAdd.date" component={customDatePicker} floatingLabelText="Date" /><br/>
+
+                    <Control model="swimToAdd.distance" component={customTextField} floatingLabelText ="Distance (in meters)"  hintText= "e.g. 3500" /><br/>
+                    <Control.custom model="swimToAdd.location" component={autoComplete} mapProps={{ onLocationSelected: (props) => props.onChange }}/><br/>
+                    
+                    <Control model="swimToAdd.link" component={customTextField} floatingLabelText ="Website"  hintText="Url" /><br/>
+                    
+                    <FlatButton style={{marginTop:'50px'}} primary={true} type="submit">
+                        Submit              
+                    </FlatButton>
+                    <FlatButton primary={true} onClick={goBack}>
+                        Cancel
+                    </FlatButton>
+                </Paper>
+            </Form>
+        </div>
     )
 };
 
@@ -75,8 +100,8 @@ class AddNewSwimFormContainer extends Component {
         console.log('handleSubmit for a swim ' + JSON.stringify(newSwim));
         this.props.addSwim(newSwim);
             
-        // console.log('Redirecting to /')  
-        // this.props.history.push('/')
+        console.log('Redirecting to /')  
+        this.props.history.push('/')
     }
 
     render = () => {

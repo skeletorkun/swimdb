@@ -1,5 +1,13 @@
 
 @media screen and (max-width: 1201px) {
     .swim-map-container { display: none; } 
+    .add-swim-raised-button {display: none !important; }
+    .add-swim-floating-button {display: block !important;}
     .competition-list-container { width: 100% !important;}
+    .add-new-swim-form {margin: 0 !important; }
 }
+
+@media screen and (min-width: 1201px) {
+    .add-swim-floating-button {display: none !important; }
+}
+
