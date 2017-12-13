@@ -7,13 +7,13 @@ class CompetitionTableComponent extends React.Component {
     render(){
       
       if(!this.props.isDataLoaded){
-        return <h1> Loading... </h1>;
+        return <h2> Loading... </h2>;
       }
 
       const data = this.props.filteredData || [];
       
       if(data.length === 0){
-        return <h1> No Competitions found </h1>
+        return <h2> No Competitions found </h2>
       }
 
       const selectedId = this.props.selectedId;

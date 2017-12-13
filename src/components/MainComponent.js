@@ -22,7 +22,7 @@ class MainComponent extends React.Component {
       <div style={{height: '100%', overflow: 'hidden'}}>   
         <Toolbar style={appBarStyle}>
           <ToolbarGroup >
-            <ToolbarTitle text="Swim DB" />
+            <ToolbarTitle text="Find Swim" />
           </ToolbarGroup>
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>

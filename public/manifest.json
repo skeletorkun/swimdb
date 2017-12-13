@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FindSwim",
+  "name": "Find Swim, Open water DB",
   "icons": [
     {
       "src": "favicon.ico",
