@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^4.6.2",
+    "firebase": "^4.8.0",
     "material-ui": "^0.19.4",
     "material-ui-autocomplete-google-places": "^2.2.0",
     "material-ui-places": "^1.1.7",

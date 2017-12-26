@@ -4,21 +4,32 @@ import { CompetitionCardComponent } from './CompetitionCardComponent'
 
 class CompetitionCardContainer extends Component{
 
-    handleClick = () =>{
-        console.log('card clicked');
-        this.props.selectCard(this.props.data.id);
+    handleCardAction = (type) => {
+      console.log('action type ' + type);
+      switch(type){
+        case 'DELETE':
+          this.props.deleteCard(this.props.data.id);
+          break;
+        case 'SEND_FEEDBACK':
+          this.props.flagCard(this.props.data.id);
+          break;
+        case 'EDIT':
+          console.log('EDIT selected but it s not yet supported');
+          break;
+        default:
+          console.error('Unexpected Card Action');
+          break;
+      }
     }
-
-    handleDelete = (e) =>{
-        console.log('card clicked ' + e);
-        this.props.deleteCard(this.props.data.id);
-        e.stopPropagation();
-    }
-
-    render = () =>{
+                  
+    render = () => {
         var swim = this.props.data;
         return (
-            <CompetitionCardComponent swim={swim} {...this.props} handleClick={this.handleClick } handleDelete={this.handleDelete} />
+            <CompetitionCardComponent 
+              swim={swim} 
+              handleCardAction = {this.handleCardAction}
+              {...this.props} 
+            />
         );
     }
 }

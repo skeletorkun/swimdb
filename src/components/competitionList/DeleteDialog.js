@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
 
 export default class DeleteDialog extends Component {
   state = {
