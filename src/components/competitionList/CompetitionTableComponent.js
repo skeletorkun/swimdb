@@ -16,13 +16,10 @@ class CompetitionTableComponent extends React.Component {
         return <h2> No Competitions found </h2>
       }
 
-      const selectedId = this.props.selectedId;
       const listItems = data.map((swim) => 
         <li key={swim.id}>
           <CompetitionCardContainer
             data={swim} 
-            isSelected = { swim.id === selectedId}
-            selectCard = { this.props.selectCard }
             deleteCard = { this.props.deleteCard }
             flagCard = {this.props.flagCard}
             hasAuth = { this.props.hasAuth }

@@ -5,7 +5,7 @@ import { CompetitionCardComponent } from './CompetitionCardComponent'
 class CompetitionCardContainer extends Component{
 
     handleCardAction = (type) => {
-      console.log('action type ' + type);
+      console.log('Card action ' + type);
       switch(type){
         case 'DELETE':
           this.props.deleteCard(this.props.data.id);
@@ -23,10 +23,8 @@ class CompetitionCardContainer extends Component{
     }
                   
     render = () => {
-        var swim = this.props.data;
         return (
             <CompetitionCardComponent 
-              swim={swim} 
               handleCardAction = {this.handleCardAction}
               {...this.props} 
             />

@@ -38,8 +38,9 @@ const CardActions = (props) => (
     </IconMenu>
 );
 
-export const CompetitionCardComponent = ( {swim, ...props} ) => {
+export const CompetitionCardComponent = ( props ) => {
 
+    const swim = props.data;
     const actionProps = { 
       canDelete : props.hasAuth,
       canFlag : props.hasAuth && !swim.isFlagged,
