@@ -5,10 +5,10 @@ import { Redirect } from 'react-router-dom'
 import { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
-import { AddNewSwimFormComponent } from './AddNewSwimFormComponent'
+import SwimFormComponent from './SwimFormComponent'
 import * as actionCreators from './../../actions/actions'
 
-class AddNewSwimFormContainer extends Component {
+class SwimForm extends Component {
 
     getAddress = (geolocation) => {
         const address = {};
@@ -42,19 +42,19 @@ class AddNewSwimFormContainer extends Component {
             return <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
         }
         else {
-            return <AddNewSwimFormComponent {...this.props} handleSubmit={this.handleSubmit} />;
+            return <SwimFormComponent {...this.props} handleSubmit={this.handleSubmit} />;
         }
 
     };
 }
 
 // add firebase
-AddNewSwimFormContainer = firebaseConnect()(AddNewSwimFormContainer);
+SwimForm = firebaseConnect()(SwimForm);
 
 function mapStateToProps(state) {
     const auth = state.firebase.auth;
     return {
-        swimToAdd: state.swimToAdd,
+        swimToEdit: state.form.swimToEdit,
         hasAuth: isLoaded(auth) && !isEmpty(auth)
     }
 }
@@ -64,6 +64,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 // enrich and reassign
-AddNewSwimFormContainer = connect(mapStateToProps, mapDispatchToProps)(AddNewSwimFormContainer)
+SwimForm = connect(mapStateToProps, mapDispatchToProps)(SwimForm)
 
-export default AddNewSwimFormContainer;
+export default SwimForm;

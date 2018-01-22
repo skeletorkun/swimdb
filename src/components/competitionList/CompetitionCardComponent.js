@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom' 
+
 //material
 import Paper from 'material-ui/Paper'
 import Divider from 'material-ui/Divider'
@@ -13,6 +15,7 @@ import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import DeleteDialog from './DeleteDialog'
 import './Card.css'
 
+
 const CardActions = (props) => (
   <IconMenu 
       iconButtonElement={<IconButton><MoreVertIcon/> </IconButton>}
@@ -21,6 +24,7 @@ const CardActions = (props) => (
       style={{float: 'right'}}
     >
       <MenuItem primaryText="Edit" 
+        containerElement={<Link to="/edit"/>}
         disabled={!props.canEdit}
         onClick={() => props.handleCardAction('EDIT')}  
       />
@@ -42,13 +46,12 @@ export const CompetitionCardComponent = ( props ) => {
 
     const swim = props.data;
     const actionProps = { 
-      canDelete : props.hasAuth,
+      canDelete : props.isAdmin,
       canFlag : props.hasAuth && !swim.isFlagged,
+      canEdit : props.isAdmin,
       handleCardAction : props.handleCardAction
     }
     var divStyle = { zDepth:2 };
-    const months = ["January", "February", "March", "April", "May" ,"June", "July", "August" , "September", "October" , "November", "December"];
-    const month = months[swim.month];
     const http = swim.link.includes('http') ? '' : 'http://';
     const link = http + swim.link;
     return(
@@ -58,7 +61,7 @@ export const CompetitionCardComponent = ( props ) => {
             <p style={{color: darkBlack, fontSize: 20}}>{swim.competition} </p>
             <p style={{color: lightBlack, fontSize: 14, marginBottom: '10px'}}>
               Distance(s): { swim.distance } <br/>
-              { month } <br/>
+              { swim.month } <br/>
               <a href={link} alt='website'>{swim.link}</a>
             </p>
         </Paper>

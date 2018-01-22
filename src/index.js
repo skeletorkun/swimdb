@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AppContainer from './components/AppContainer'
 import LoginComponent from './components/user/LoginContainer'
-import AddNewSwimFormContainer from './components/form/AddNewSwimFormContainer'
+import SwimForm from './components/form/SwimForm'
 import configureStore from './configureStore'
 import registerServiceWorker from './registerServiceWorker'
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -19,14 +19,15 @@ injectTapEventPlugin();
 const store = configureStore();
 
 document.addEventListener('DOMContentLoaded', function() {
-   render(     
+   render(
     <Provider store={ store }>
       <MuiThemeProvider>
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={ AppContainer }/>
             <Route exact path='/login' component={ LoginComponent }/>
-            <Route path='/add' component={ AddNewSwimFormContainer }/>
+            <Route path='/add' component={ SwimForm }/>
+            <Route path='/edit' component={ SwimForm }/>
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>

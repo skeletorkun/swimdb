@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CompetitionCardComponent } from './CompetitionCardComponent'
 
-class CompetitionCardContainer extends Component{
+class CompetitionCard extends Component{
 
     handleCardAction = (type) => {
       console.log('Card action ' + type);
@@ -14,7 +14,7 @@ class CompetitionCardContainer extends Component{
           this.props.flagCard(this.props.data.id);
           break;
         case 'EDIT':
-          console.log('EDIT selected but it s not yet supported');
+          this.props.editCardRequest(this.props.data);
           break;
         default:
           console.error('Unexpected Card Action');
@@ -32,11 +32,11 @@ class CompetitionCardContainer extends Component{
     }
 }
 
-CompetitionCardContainer.propTypes = {
+CompetitionCard.propTypes = {
     data : PropTypes.object.isRequired,
-    selectCard : PropTypes.func.isRequired,
     deleteCard : PropTypes.func.isRequired,
-    isSelected : PropTypes.bool.isRequired
+    flagCard : PropTypes.func.isRequired,
+    editCardRequest : PropTypes.func.isRequired,
   }
 
-export default CompetitionCardContainer;
+export default CompetitionCard;

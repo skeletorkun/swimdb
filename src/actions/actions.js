@@ -1,6 +1,7 @@
 export const UPDATE_FILTERS = 'UPDATE_FILTERS'
 export const DATA_ADDED = 'DATA_ADDED'
 export const CARD_SELECTED = 'CARD_SELECTED'
+export const CARD_EDIT_REQUESTED = 'CARD_EDIT_REQUESTED'
 export const CARD_DELETE_REQUESTED = 'CARD_DELETE_REQUESTED'
 
 export const updateFilters = (filters) => ({
@@ -18,7 +19,7 @@ export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
 
 export const selectCard = (id) => ({
   type: CARD_SELECTED,
-  id: id
+  id
 });
 
 export const deleteCard = (id) => (dispatch, getState, getFirebase) => {
@@ -46,3 +47,8 @@ export const flagCard = (id) => (dispatch, getState, getFirebase) => {
     console.error('Sth went wrong during deletion ' + err);
   }
 }
+
+export const editCardRequest = (swim) => ({
+  type: CARD_EDIT_REQUESTED,
+  swim
+});

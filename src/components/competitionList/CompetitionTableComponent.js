@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CompetitionCardContainer from './CompetitionCard'
+import CompetitionCard from './CompetitionCard'
     
 class CompetitionTableComponent extends React.Component {
   
@@ -18,11 +18,13 @@ class CompetitionTableComponent extends React.Component {
 
       const listItems = data.map((swim) => 
         <li key={swim.id}>
-          <CompetitionCardContainer
+          <CompetitionCard
             data={swim} 
             deleteCard = { this.props.deleteCard }
             flagCard = {this.props.flagCard}
+            editCardRequest = {this.props.editCardRequest}
             hasAuth = { this.props.hasAuth }
+            isAdmin = { this.props.profile.isAdmin }
           />
         </li>
       );        
