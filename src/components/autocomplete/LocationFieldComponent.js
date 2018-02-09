@@ -19,8 +19,9 @@ export const getCountryFromAddress = (address) => {
 class LocationFieldComponent extends Component{
     constructor(props) {
         super(props);
+        const viewValue = this.props.value;
         this.state = {
-            value: ''
+            value:  viewValue && viewValue.formatted_address
         };
     }
 

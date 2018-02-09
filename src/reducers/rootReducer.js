@@ -7,7 +7,7 @@ import { cardReducer } from './cardReducer'
 const rootReducer = combineReducers({
     firebase: firebaseStateReducer,
     filters: filterReducer,
-    form: formReducer,
+    formData: formReducer,
     selectedId: cardReducer
 });
 

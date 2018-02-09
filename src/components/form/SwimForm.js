@@ -6,7 +6,7 @@ import { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 import SwimFormComponent from './SwimFormComponent'
-import * as actionCreators from './../../actions/actions'
+import { updateSwim, addSwim } from './../../actions/actions'
 
 class SwimForm extends Component {
 
@@ -27,10 +27,17 @@ class SwimForm extends Component {
         }
 
         console.log('handle submit for a swim ' + JSON.stringify(swim));
-        const newSwim = Object.assign({}, swim);
-        newSwim.location = this.getAddress(swim.location);
-        console.log('handleSubmit for a swim ' + JSON.stringify(newSwim));
-        this.props.addSwim(newSwim);
+
+        if(swim.id){
+            //update
+            this.props.updateSwim(swim);
+        }
+        else{
+            //new swim
+            const newSwim = Object.assign({}, swim);
+            newSwim.location = this.getAddress(swim.location);
+            this.props.addSwim(newSwim);
+        }
 
         console.log('Redirecting to /')
         this.props.history.push('/')
@@ -54,13 +61,13 @@ SwimForm = firebaseConnect()(SwimForm);
 function mapStateToProps(state) {
     const auth = state.firebase.auth;
     return {
-        swimToEdit: state.form.swimToEdit,
+        swimToEdit: state.swimToEdit,
         hasAuth: isLoaded(auth) && !isEmpty(auth)
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actionCreators, dispatch);
+    return bindActionCreators({updateSwim, addSwim}, dispatch);
 }
 
 // enrich and reassign
