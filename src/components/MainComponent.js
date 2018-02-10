@@ -27,7 +27,7 @@ class MainComponent extends React.Component {
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>
         <Divider />
-        <AddNewLink/>         
+        <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>         
         <FiltersContainer  {...this.props} />
         <div className='swim-map-container' style={mapStyle}>
           <SwimMap {...this.props}/>          

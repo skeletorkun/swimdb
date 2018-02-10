@@ -1,10 +1,12 @@
-import { CARD_EDIT_REQUESTED } from '../actions/actions'
-import { combineForms, actions } from 'react-redux-form'
+import { CARD_EDIT_REQUESTED, ADD_CARD_REQUESTED } from '../actions/actions'
+import { combineForms } from 'react-redux-form'
 
-export const swimToEditReducer = (swim = {}, action) => {
+const swimToEditReducer = (swim = {}, action) => {
     switch(action.type){
         case CARD_EDIT_REQUESTED:
             return action.swim;
+        case ADD_CARD_REQUESTED:
+            return {}; //clear swimToEdit, form data
         default:
             return swim;
     }

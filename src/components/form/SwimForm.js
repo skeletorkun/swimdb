@@ -6,7 +6,7 @@ import { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 import SwimFormComponent from './SwimFormComponent'
-import { updateSwim, addSwim } from './../../actions/actions'
+import { updateSwim, addSwim} from './../../actions/formActions'
 
 class SwimForm extends Component {
 

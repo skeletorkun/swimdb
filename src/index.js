@@ -2,13 +2,15 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import AppContainer from './components/AppContainer'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+import Main from './components/Main'
 import LoginComponent from './components/user/LoginContainer'
 import SwimForm from './components/form/SwimForm'
 import configureStore from './configureStore'
 import registerServiceWorker from './registerServiceWorker'
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import './index.css'
 
 // Material UI
@@ -24,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
       <MuiThemeProvider>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={ AppContainer }/>
+            <Route exact path='/' component={ Main }/>
             <Route exact path='/login' component={ LoginComponent }/>
-            <Route path='/add' component={ SwimForm }/>
-            <Route path='/edit' component={ SwimForm }/>
+            <Route path='/add' component={ SwimForm } />
+            <Route path='/edit' component={ SwimForm } />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>

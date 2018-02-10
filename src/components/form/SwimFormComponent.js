@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LocationFieldComponent from './../autocomplete/LocationFieldComponent'
-import { Control, Form, actions} from 'react-redux-form'
+import { Control, Form} from 'react-redux-form'
 import CustomSelectComponent from './CustomSelectComponent'
 //material ui
 import AppBar from 'material-ui/AppBar'
@@ -32,11 +32,11 @@ class SwimFormComponent extends Component {
     }
 
     render = () => {
-        console.log('components says swimToEdit is : ' + this.props.swimToEdit);
+        let title = this.props.location.pathname.includes('add') ? "Add New Swim" : "Edit Swim";
         return (
             <div>
                 <AppBar
-                    title={<span >Add New Swim Event</span>}
+                    title={<span >{title}</span>}
                     iconElementLeft={<IconButton><NavigationClose onClick={this.goBack} /></IconButton>}
                 />
                 <Form model="formData.swimToEdit" onSubmit={(s) => this.props.handleSubmit(s)}>
