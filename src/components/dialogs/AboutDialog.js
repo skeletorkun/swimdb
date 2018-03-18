@@ -8,7 +8,7 @@ import {grey500} from 'material-ui/styles/colors';
 
 export default class AboutDialog extends Component {
   state = {
-    open: this.props.open,
+    open: false,
   };
 
   handleOpen = () => {

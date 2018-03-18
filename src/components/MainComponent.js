@@ -24,7 +24,7 @@ class MainComponent extends React.Component {
         <Toolbar style={appBarStyle}>
           <ToolbarGroup >
             <ToolbarTitle text="Find Swim" />
-            <AboutDialog open={this.props.isShowingModal} />
+            <AboutDialog />
           </ToolbarGroup>
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>

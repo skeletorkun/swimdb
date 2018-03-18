@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose, withProps } from "recompose"
+import { compose, withProps, withState, withHandlers } from "recompose"
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer"
+
+import { InfoWindow } from "./map/InfoWindow"
 
 const Map = compose(
   withProps({
@@ -11,38 +13,51 @@ const Map = compose(
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
+  withState('places', 'updatePlaces', ''),
+  withState('selectedPlace', 'updateSelectedPlace', null),
+  withHandlers(() => ({
+    onToggleOpen: ({ updateSelectedPlace }) => key => {
+      updateSelectedPlace(key);
+    }
+  })
+  ),
   withGoogleMap
 )((props) =>
-  
+
   <GoogleMap
     defaultZoom={8}
     defaultCenter={{ lat: 43.7, lng: 7.1 }}
   >
     <MarkerClusterer
-        averageCenter
-        enableRetinaIcons
-        gridSize={60}
-      >
+      averageCenter
+      enableRetinaIcons
+      gridSize={60}
+    >
       {props.data.map(swim => (
         <Marker
           key={swim.id}
-          position={{ lat: parseFloat(swim.location.latitude), lng:parseFloat(swim.location.longitude) }}
-        />
+          position={{ lat: parseFloat(swim.location.latitude), lng: parseFloat(swim.location.longitude) }}
+          onClick={() => props.onToggleOpen(swim.id)}
+        >
+          {props.selectedPlace === swim.id &&
+            <InfoWindow onCloseClick={props.onToggleOpen} swim={swim} />
+          }
+        </Marker>
       ))}
     </MarkerClusterer>
   </GoogleMap>
-);
+  );
 
-class SwimMap extends React.Component{
-  render(){
-    const data= this.props.filteredData || [];
-    return <Map data={data}/>;
+class SwimMap extends React.Component {
+  render() {
+    const data = this.props.filteredData || [];
+    return <Map data={data} />;
   }
 }
 
 SwimMap.propTypes = {
-  filteredData : PropTypes.array.isRequired,
-  updateFilters : PropTypes.func.isRequired
+  filteredData: PropTypes.array.isRequired,
+  updateFilters: PropTypes.func.isRequired
 }
 
 export default SwimMap;
