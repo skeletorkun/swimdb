@@ -5,6 +5,7 @@ import FiltersContainer from './filters/FiltersContainer'
 import UserInfoContainer from './user/UserInfoContainer'
 import SwimMap from './SwimMap'
 import { AddNewLink } from './AddNewLink'
+import AboutDialog from './dialogs/AboutDialog'
 
 import './Main.css'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
@@ -23,6 +24,7 @@ class MainComponent extends React.Component {
         <Toolbar style={appBarStyle}>
           <ToolbarGroup >
             <ToolbarTitle text="Find Swim" />
+            <AboutDialog open={this.props.isShowingModal} />
           </ToolbarGroup>
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>

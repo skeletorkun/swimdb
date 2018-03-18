@@ -32,7 +32,7 @@ function mapStateToProps(state){
         selectedId : state.selectedId,
         isDataLoaded : isLoaded(data),
         isDataEmpty : isEmpty(data),
-        hasAuth : isLoaded(auth) && !isEmpty(auth)
+        hasAuth : isLoaded(auth) && !isEmpty(auth),
     }
 }
 
