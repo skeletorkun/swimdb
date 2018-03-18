@@ -6,7 +6,7 @@ import { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 import SwimFormComponent from './SwimFormComponent'
-import { updateSwim, addSwim} from './../../actions/formActions'
+import { updateSwim, addSwim } from './../../actions/formActions'
 
 class SwimForm extends Component {
 
@@ -28,11 +28,11 @@ class SwimForm extends Component {
 
         console.log('handle submit for a swim ' + JSON.stringify(swim));
 
-        if(swim.id){
+        if (swim.id) {
             //update
             this.props.updateSwim(swim);
         }
-        else{
+        else {
             //new swim
             const newSwim = Object.assign({}, swim);
             newSwim.location = this.getAddress(swim.location);
@@ -67,7 +67,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({updateSwim, addSwim}, dispatch);
+    return bindActionCreators({ updateSwim, addSwim }, dispatch);
 }
 
 // enrich and reassign

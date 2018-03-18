@@ -3,8 +3,8 @@ export const DATA_ADDED = 'DATA_ADDED'
 export const CARD_SELECTED = 'CARD_SELECTED'
 export const ADD_CARD_REQUESTED = 'ADD_CARD_REQUESTED'
 export const CARD_EDIT_REQUESTED = 'CARD_EDIT_REQUESTED'
-export const CARD_DELETE_REQUESTED = 'CARD_DELETE_REQUESTED'
-
+export const SHOW_DELETE_DIALOG = 'SHOW_DELETE_DIALOG'
+export const HIDE_DELETE_DIALOG = 'HIDE_DELETE_DIALOG'
 
 export const updateFilters = (filters) => ({
   type: UPDATE_FILTERS,
@@ -42,7 +42,7 @@ export const flagCard = (id) => (dispatch, getState, getFirebase) => {
   }
 }
 
-export const editCardRequest = (swim) => ({
+export const editCard = (swim) => ({
   type: CARD_EDIT_REQUESTED,
   swim
 });
@@ -53,3 +53,12 @@ export const addCardRequest = () => {
     swim : {}
   }
 }
+
+export const showDeleteDialog = (swimId) =>({
+    type: SHOW_DELETE_DIALOG,
+    modalType: 'DELETE',
+    modalProps: { 
+        open : true,
+        swimId,
+    }
+})

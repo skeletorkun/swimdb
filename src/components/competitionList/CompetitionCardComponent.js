@@ -10,9 +10,7 @@ import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconDelete from 'material-ui/svg-icons/action/delete'
 import IconFeedback from 'material-ui/svg-icons/action/feedback'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
-
-import DeleteDialog from './DeleteDialog'
+import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 import './Card.css'
 
 

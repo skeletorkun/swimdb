@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton'
 
 export default class DeleteDialog extends Component {
   state = {
-    open: false,
+    open: this.props.modalProps.open || false
   };
 
   handleOpen = () => {
@@ -18,8 +18,9 @@ export default class DeleteDialog extends Component {
 
   handleConfirm = () => {
     this.handleClose();
-    this.props.onConfirm();
+    this.props.onConfirm(this.props.modalProps.swimId);
   }
+
   render() {
     const actions = [
       <FlatButton
@@ -35,10 +36,8 @@ export default class DeleteDialog extends Component {
       />,
     ];
     
-    const visibility = this.props.isVisible;
     return (
       <div>
-        <RaisedButton label="Delete" style={{float: 'right', display: visibility}} onClick={this.handleOpen} />
         <Dialog
           title="Confirm Delete Swim"
           actions={actions}

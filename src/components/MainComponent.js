@@ -6,6 +6,7 @@ import UserInfoContainer from './user/UserInfoContainer'
 import SwimMap from './SwimMap'
 import { AddNewLink } from './AddNewLink'
 import AboutDialog from './dialogs/AboutDialog'
+import DeleteDialog from './dialogs/DeleteDialog'
 
 import './Main.css'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
@@ -18,13 +19,14 @@ class MainComponent extends React.Component {
     const appBarStyle = {height: '60px', backgroundColor: 'white'};
     const mapStyle = {float: 'left', width:'66%', height: '85%', margin: '0.5%'};
     const listStyle = {float: 'right', width:'33%', margin: '0, auto', height: '85%', overflow: 'auto'};
-  
+    const showingDialog = this.props.dialogState.modalProps.open;
     return (
       <div style={{height: '100%', overflow: 'hidden'}}>   
         <Toolbar style={appBarStyle}>
           <ToolbarGroup >
             <ToolbarTitle text="Find Swim" />
-            <AboutDialog />
+            <AboutDialog/>
+            { showingDialog && <DeleteDialog {...this.props.dialogState} onConfirm={this.props.deleteCard}/> }
           </ToolbarGroup>
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>

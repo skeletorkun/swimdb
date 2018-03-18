@@ -28,6 +28,7 @@ function mapStateToProps(state){
         auth: auth,        
         profile: fb.profile,
         filters : state.filters,
+        dialogState : state.dialogState,
         filteredData : getFilteredDataRows(data, state.filters),
         selectedId : state.selectedId,
         isDataLoaded : isLoaded(data),

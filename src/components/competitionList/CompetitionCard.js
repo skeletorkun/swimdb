@@ -8,13 +8,13 @@ class CompetitionCard extends Component{
       console.log('Card action ' + type);
       switch(type){
         case 'DELETE':
-          this.props.deleteCard(this.props.data.id);
+          this.props.showDeleteDialog(this.props.data.id);
           break;
         case 'SEND_FEEDBACK':
           this.props.flagCard(this.props.data.id);
           break;
         case 'EDIT':
-          this.props.editCardRequest(this.props.data);
+          this.props.editCard(this.props.data);
           break;
         default:
           console.error('Unexpected Card Action');
@@ -34,9 +34,9 @@ class CompetitionCard extends Component{
 
 CompetitionCard.propTypes = {
     data : PropTypes.object.isRequired,
-    deleteCard : PropTypes.func.isRequired,
+    showDeleteDialog : PropTypes.func.isRequired,
     flagCard : PropTypes.func.isRequired,
-    editCardRequest : PropTypes.func.isRequired,
+    editCard : PropTypes.func.isRequired,
   }
 
 export default CompetitionCard;
