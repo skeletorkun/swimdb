@@ -30,3 +30,14 @@ Compile
  
 ```
 npm run compile
+
+
+ 
+Deploy
+---
+
+Deploy on Firebase
+ 
+```
+npm run build
+firebase deploy

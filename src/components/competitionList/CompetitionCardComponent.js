@@ -62,7 +62,7 @@ export const CompetitionCardComponent = ( props ) => {
             <p style={{color: lightBlack, fontSize: 14, marginBottom: '10px'}}>
               Distance(s): { swim.distance } <br/>
               { swim.month } <br/>
-              <a href={link} alt='website'>{swim.link}</a>
+              <a href={link} alt='website'  target="_blank">{swim.link}</a>
             </p>
         </Paper>
     );

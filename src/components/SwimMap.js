@@ -4,7 +4,7 @@ import { compose, withProps, withState, withHandlers } from "recompose"
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer"
 
-import { InfoWindow } from "./map/InfoWindow"
+import InfoWindow from "./map/InfoWindow"
 
 const Map = compose(
   withProps({
