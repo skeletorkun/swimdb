@@ -26,7 +26,7 @@ class MainComponent extends React.Component {
           <ToolbarGroup >
             <ToolbarTitle text="Find Swim" />
             <AboutDialog/>
-            { showingDialog && <DeleteDialog {...this.props.dialogState} onConfirm={this.props.deleteCard}/> }
+            { showingDialog && <DeleteDialog {...this.props.dialogState} onConfirm={this.props.deleteCard} hideDeleteDialog={this.props.hideDeleteDialog}/> }
           </ToolbarGroup>
             <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
         </Toolbar>

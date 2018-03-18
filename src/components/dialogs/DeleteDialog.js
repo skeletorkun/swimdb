@@ -14,11 +14,13 @@ export default class DeleteDialog extends Component {
 
   handleClose = () => {
     this.setState({open: false});
+    this.props.hideDeleteDialog();
   };
 
   handleConfirm = () => {
     this.handleClose();
     this.props.onConfirm(this.props.modalProps.swimId);
+    this.props.hideDeleteDialog();
   }
 
   render() {

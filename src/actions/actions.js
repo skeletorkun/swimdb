@@ -62,3 +62,13 @@ export const showDeleteDialog = (swimId) =>({
         swimId,
     }
 })
+
+
+export const hideDeleteDialog = (swimId) =>({
+  type: HIDE_DELETE_DIALOG,
+  modalType: 'DELETE',
+  modalProps: { 
+      open : false,
+      swimId,
+  }
+})
