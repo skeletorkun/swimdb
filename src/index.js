@@ -8,6 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Main from './components/Main'
 import LoginComponent from './components/user/LoginContainer'
 import SwimForm from './components/form/SwimForm'
+import FiltersForm from './components/filters/FiltersForm'
 import configureStore from './configureStore'
 import registerServiceWorker from './registerServiceWorker'
 
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <Route exact path='/login' component={ LoginComponent }/>
             <Route path='/add' component={ SwimForm } />
             <Route path='/edit' component={ SwimForm } />
+            <Route path='/filters' component={ FiltersForm } />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>

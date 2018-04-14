@@ -3,7 +3,7 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
 import IconHelp from 'material-ui/svg-icons/action/help-outline'
-import {grey500} from 'material-ui/styles/colors';
+import {grey500} from 'material-ui/styles/colors'
 
 
 export default class AboutDialog extends Component {

@@ -2,37 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CompetitionTableComponent from './competitionList/CompetitionTableComponent'
 import FiltersContainer from './filters/FiltersContainer'
-import UserInfoContainer from './user/UserInfoContainer'
-import SwimMap from './SwimMap'
 import { AddNewLink } from './AddNewLink'
-import AboutDialog from './dialogs/AboutDialog'
-import DeleteDialog from './dialogs/DeleteDialog'
+import { AppBarContainer } from './AppBarContainer'
 
 import './Main.css'
-import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 import Divider from 'material-ui/Divider'
+import SwimMap from './SwimMap'
+
 
 class MainComponent extends React.Component {
   
   render(){
 
-    const appBarStyle = {height: '60px', backgroundColor: 'white'};
     const mapStyle = {float: 'left', width:'66%', height: '85%', margin: '0.5%'};
     const listStyle = {float: 'right', width:'33%', margin: '0, auto', height: '85%', overflow: 'auto'};
-    const showingDialog = this.props.dialogState.modalProps.open;
     return (
       <div style={{height: '100%', overflow: 'hidden'}}>   
-        <Toolbar style={appBarStyle}>
-          <ToolbarGroup >
-            <ToolbarTitle text="Find Swim" />
-            <AboutDialog/>
-            { showingDialog && <DeleteDialog {...this.props.dialogState} onConfirm={this.props.deleteCard} hideDeleteDialog={this.props.hideDeleteDialog}/> }
-          </ToolbarGroup>
-            <UserInfoContainer auth={this.props.auth} profile={this.props.profile} firebase={this.props.firebase}/>          
-        </Toolbar>
+        <AppBarContainer {...this.props}/>
         <Divider />
-        <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>         
-        <FiltersContainer  {...this.props} />
+        <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>   
+        <div className='filters-container-big'>      
+          <FiltersContainer {...this.props} />
+        </div>
         <div className='swim-map-container' style={mapStyle}>
           <SwimMap {...this.props}/>          
         </div>

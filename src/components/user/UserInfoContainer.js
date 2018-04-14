@@ -11,7 +11,7 @@ const UserContainer = (props) => {
     
     return (
         <ToolbarGroup>
-            <ToolbarTitle text={ props.profile.displayName } />
+            <ToolbarTitle className='user-info-name' text={ props.profile.displayName } />
             <IconMenu
                 {...props}
                     iconButtonElement={

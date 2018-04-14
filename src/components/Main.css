@@ -1,13 +1,22 @@
 
 @media screen and (max-width: 1201px) {
-    .swim-map-container { display: none; } 
+    
+    
+    /* hide */
     .add-swim-raised-button {display: none !important; }
-    .add-swim-floating-button {display: block !important;}
-    .competition-list-container { width: 100% !important;}
-    .add-new-swim-form {margin: 0 !important; }
+    .competition-list-container { display: none !important;}
+    .user-info-name { display: none !important; }
+    .filters-container-big {display: none;}
+    
+    /* show */
+    .swim-map-container { width: 100% !important; height: 95% !important;} 
+    .add-swim-floating-button {display: block !important;  z-index: 9999 !important;}
+    .filters-link {display: block; }
+    .add-new-swim-form {margin: 0 !important;  }
 }
 
 @media screen and (min-width: 1201px) {
     .add-swim-floating-button {display: none !important; }
+    .filters-link {display: none !important;}
 }
 

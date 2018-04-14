@@ -1,8 +1,8 @@
-.filters-container {
+.filters-div {
     display: table-row;
 }
 
-.filters-container > div {
+.filters-div > div {
     float: left;;
     padding-left: 20px;
     padding-right: 20px;

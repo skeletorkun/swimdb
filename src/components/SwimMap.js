@@ -27,6 +27,16 @@ const Map = compose(
   <GoogleMap
     defaultZoom={8}
     defaultCenter={{ lat: 43.7, lng: 7.1 }}
+    defaultOptions={{
+      streetViewControl: false,
+      scaleControl: false,
+      mapTypeControl: false,
+      panControl: false,
+      zoomControl: false,
+      rotateControl: false,
+      fullscreenControl: false
+    }}
+
   >
     <MarkerClusterer
       averageCenter
