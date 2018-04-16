@@ -1,5 +1,12 @@
+import ReactGA from 'react-ga'
 
 export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
+  
+  ReactGA.event({
+    category: 'Action',
+    action: 'addSwim',
+  });
+
   console.log('adding a swim ' + JSON.stringify(swim));
   const dataRef = getFirebase().database().ref().child('data');
   var newSwimRef = dataRef.push();
@@ -9,6 +16,12 @@ export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
 }
 
 export const updateSwim = (swim) => (dispatch, getState, getFirebase) => {
+
+  ReactGA.event({
+    category: 'Action',
+    action: 'updateSwim',
+  });
+
   console.log('updating a swim ' + JSON.stringify(swim));
   const dataRef = getFirebase().database().ref().child('data');
   dataRef.child(swim.id).update(swim)

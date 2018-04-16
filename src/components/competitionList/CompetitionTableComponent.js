@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CompetitionCard from './CompetitionCard'
 
+import { darkBlack } from 'material-ui/styles/colors'
+
 class CompetitionTableComponent extends React.Component {
 
   render() {
@@ -15,7 +17,7 @@ class CompetitionTableComponent extends React.Component {
     if (data.length === 0) {
       return <h2> No Competitions found </h2>
     }
-
+    
     const listItems = data.map((swim) =>
       <li key={swim.id}>
         <CompetitionCard
@@ -28,8 +30,15 @@ class CompetitionTableComponent extends React.Component {
         />
       </li>
     );
+    
+    const title = "Showing " + data.length + " venues";
+    const titleStyle = {color: darkBlack, fontSize: 14, textAlign: 'right', paddingRight: '20px', fontFamily: 'Roboto, sans-serif'}
+    console.log("totals " + title)
     return (
-      <ul style={{ listStyle: 'none', paddingLeft: 0 }}>{listItems}</ul>
+      <div>
+        <p style={titleStyle}>{title}</p>
+        <ul style={{ listStyle: 'none', paddingLeft: 0 }}>{listItems}</ul>      
+      </div>
     );
   }
 }

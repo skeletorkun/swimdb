@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { GuestContainer } from './GuestContainer'
 import { isLoaded, isEmpty } from 'react-redux-firebase'
+import ReactGA from 'react-ga'
 
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
@@ -8,6 +9,9 @@ import Avatar from 'material-ui/Avatar'
 import {ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
 
 const UserContainer = (props) => {
+    
+    // track user
+    ReactGA.set({ userId: props.profile.email });
     
     return (
         <ToolbarGroup>

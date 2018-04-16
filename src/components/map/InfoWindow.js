@@ -13,6 +13,7 @@ class InfoWindow extends React.Component {
 
         const http = swim.link.includes('http') ? '' : 'http://';
         const link = http + swim.link;
+        const linkLabel = swim.link.length > 40 ? 'website' : swim.link;
         return (
             <GoogleInfoWindow onCloseClick={this.props.onToggleOpen}>
                 <div>
@@ -21,7 +22,7 @@ class InfoWindow extends React.Component {
                     <p style={{ color: lightBlack, fontSize: 14, marginBottom: '10px' }}>
                         Distance(s): {swim.distance} <br />
                         {swim.month} <br />
-                        <a href={link} alt='website' target="_blank">{swim.link}</a>
+                        <a href={link} alt='website' target="_blank">{linkLabel}</a>
                     </p>
                 </div>
             </GoogleInfoWindow>

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension'
 import firebase from 'firebase'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
@@ -12,9 +12,9 @@ const configureStore = (initialState = {}) => {
     console.log('Firebase initialized');
 
     const middlewares = [thunk.withExtraArgument(getFirebase)];
-       
+
     const store = createStore(
-        rootReducer, 
+        rootReducer,
         initialState,
         composeWithDevTools(
             applyMiddleware(...middlewares),

@@ -11,6 +11,7 @@ import SwimForm from './components/form/SwimForm'
 import FiltersForm from './components/filters/FiltersForm'
 import configureStore from './configureStore'
 import registerServiceWorker from './registerServiceWorker'
+import withTracker from './analytics';
 
 import './index.css'
 
@@ -27,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
       <MuiThemeProvider>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={ Main }/>
-            <Route exact path='/login' component={ LoginComponent }/>
-            <Route path='/add' component={ SwimForm } />
-            <Route path='/edit' component={ SwimForm } />
-            <Route path='/filters' component={ FiltersForm } />
+            <Route exact path='/' component={ withTracker(Main) }/>
+            <Route exact path='/login' component={  withTracker(LoginComponent) }/>
+            <Route path='/add' component={ withTracker(SwimForm) } />
+            <Route path='/edit' component={  withTracker(SwimForm) } />
+            <Route path='/filters' component={  withTracker(FiltersForm) } />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>

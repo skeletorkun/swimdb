@@ -9,6 +9,7 @@
     "material-ui-places": "^1.1.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-ga": "^2.4.1",
     "react-google-button": "^0.4.0",
     "react-google-maps": "^9.2.2",
     "react-places-autocomplete": "^5.4.3",
