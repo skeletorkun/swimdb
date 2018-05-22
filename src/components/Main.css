@@ -4,12 +4,10 @@
     
     /* hide */
     .add-swim-raised-button {display: none !important; }
-    .competition-list-container { display: none !important;}
     .user-info-name { display: none !important; }
     .filters-container-big {display: none;}
     
     /* show */
-    .swim-map-container { width: 100% !important; height: 95% !important;} 
     .add-swim-floating-button {display: block !important;  z-index: 9999 !important;}
     .filters-link {display: block; }
     .add-new-swim-form {margin: 0 !important;  }
