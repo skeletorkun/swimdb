@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CompetitionCard from './CompetitionCard'
 
-import { darkBlack } from 'material-ui/styles/colors'
+import { darkBlack } from '@material-ui/core/colors'
 
 class CompetitionTableComponent extends React.Component {
 

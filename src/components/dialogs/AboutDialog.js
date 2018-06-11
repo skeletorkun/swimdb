@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
-import IconButton from 'material-ui/IconButton'
-import IconHelp from 'material-ui/svg-icons/action/help-outline'
-import { grey500 } from 'material-ui/styles/colors'
+import Dialog from '@material-ui/core/Dialog'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import IconHelp from '@material-ui/icons/HelpOutline'
+import { grey500 } from '@material-ui/core/colors'
 
 
 export default class AboutDialog extends Component {
@@ -21,7 +21,7 @@ export default class AboutDialog extends Component {
 
   render() {
     const actions = [
-      <FlatButton
+      <Button
         label="Close"
         primary={true}
         keyboardFocused={true}

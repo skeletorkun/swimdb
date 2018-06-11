@@ -2,7 +2,7 @@ import React from 'react'
 import UserInfoContainer from './user/UserInfoContainer'
 import AboutDialog from './dialogs/AboutDialog'
 import DeleteDialog from './dialogs/DeleteDialog'
-import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar'
+import { Toolbar, ToolbarGroup, ToolbarTitle } from '@material-ui/core/Toolbar'
 import { FiltersLink } from './filters/FiltersLink';
 
 export const AppBarContainer = (props) => {

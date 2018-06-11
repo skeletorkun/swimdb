@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FiltersContainer from './filters/FiltersContainer'
 import { AddNewLink } from './AddNewLink'
-import { AppBarContainer } from './AppBarContainer'
+import MenuAppBar from './MenuAppBar'
 import ResultsComponentDesktop from './ResultsComponentDesktop'
 import ResultsComponentMobile from './ResultsComponentMobile'
 import './Main.css'
-import Divider from 'material-ui/Divider'
+import Divider from '@material-ui/core/Divider'
 
 
 class MainComponent extends React.Component {
@@ -19,7 +19,7 @@ class MainComponent extends React.Component {
 
     return (
       <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-        <AppBarContainer {...this.props} />
+        <MenuAppBar {...this.props} />
         <Divider />
         <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history} />
         <div className='filters-container-big'>

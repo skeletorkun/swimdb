@@ -1,7 +1,7 @@
 import React from 'react'
-import MapIcon from 'material-ui/svg-icons/maps/map'
-import ListIcon from 'material-ui/svg-icons/action/list'
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation'
+import MapIcon from '@material-ui/icons/Map'
+import ListIcon from '@material-ui/icons/List'
+import { BottomNavigation, BottomNavigationItem } from '@material-ui/core/BottomNavigation'
 
 import CompetitionTableComponent from './competitionList/CompetitionTableComponent'
 import SwimMap from './SwimMap'

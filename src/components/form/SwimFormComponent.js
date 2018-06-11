@@ -3,13 +3,13 @@ import LocationFieldComponent from './../autocomplete/LocationFieldComponent'
 import { Control, Form} from 'react-redux-form'
 import CustomSelectComponent from './CustomSelectComponent'
 //material ui
-import AppBar from 'material-ui/AppBar'
-import IconButton from 'material-ui/IconButton'
-import NavigationClose from 'material-ui/svg-icons/navigation/close'
-import FlatButton from 'material-ui/FlatButton'
-import TextField from 'material-ui/TextField'
+import AppBar from '@material-ui/core/AppBar'
+import IconButton from '@material-ui/core/IconButton'
+import NavigationClose from '@material-ui/icons/Close'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
-import Paper from 'material-ui/Paper'
+import Paper from '@material-ui/core/Paper'
 
 class SwimFormComponent extends Component {
 
@@ -58,12 +58,12 @@ class SwimFormComponent extends Component {
                         <Control model=".link" component={this.customTextField}
                             floatingLabelText="Website" hintText="Url" /><br />
 
-                        <FlatButton style={{ marginTop: '50px' }} primary={true} type="submit">
+                        <Button style={{ marginTop: '50px' }} primary={true} type="submit">
                             Submit
-                        </FlatButton>
-                        <FlatButton primary={true} onClick={this.goBack}>
+                        </Button>
+                        <Button primary={true} onClick={this.goBack}>
                             Cancel
-                    </FlatButton>
+                    </Button>
                     </Paper>
                 </Form>
             </div>

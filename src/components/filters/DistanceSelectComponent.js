@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class DistanceSelectComponent extends Component {
 
@@ -25,7 +25,7 @@ class DistanceSelectComponent extends Component {
     render = () =>{
 
         return (
-            <SelectField
+            <Select
                 floatingLabelText="Distance"
                 value={this.state.value}
                 onChange={this.handleChange}
@@ -36,7 +36,7 @@ class DistanceSelectComponent extends Component {
                 <MenuItem value={4} primaryText="5k to 10k" />
                 <MenuItem value={5} primaryText="10k to 15k" />
                 <MenuItem value={6} primaryText=">15k" />
-            </SelectField>
+            </Select>
         );
     }
 }

@@ -6,9 +6,9 @@ import { updateFilters } from './../../actions/actions'
 import FiltersContainer from './FiltersContainer'
 
 //material ui
-import AppBar from 'material-ui/AppBar'
-import IconButton from 'material-ui/IconButton'
-import NavigationClose from 'material-ui/svg-icons/navigation/close'
+import AppBar from '@material-ui/core/AppBar'
+import IconButton from '@material-ui/core/IconButton'
+import NavigationClose from '@material-ui/icons/Close'
 
 class FiltersForm extends Component {
 

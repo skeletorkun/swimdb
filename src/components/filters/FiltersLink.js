@@ -1,7 +1,7 @@
 import React from 'react'
-import IconButton from 'material-ui/IconButton'
-import IconTune from 'material-ui/svg-icons/image/tune'
-import {grey500} from 'material-ui/styles/colors'
+import IconButton from '@material-ui/core/IconButton'
+import IconTune from '@material-ui/icons/Tune'
+import {grey500} from '@material-ui/core/colors'
 
 export const FiltersLink = (props) => {
 
