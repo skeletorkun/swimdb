@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
+import SelectField from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 class CustomSelectComponent extends Component {
 

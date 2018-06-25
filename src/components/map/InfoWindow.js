@@ -1,6 +1,6 @@
 import React from 'react'
 import { InfoWindow as GoogleInfoWindow } from "react-google-maps"
-import { grey400, darkBlack, lightBlack } from 'material-ui/styles/colors'
+import { grey400, darkBlack, lightBlack } from '@material-ui/core/colors'
 
 class InfoWindow extends React.Component {
 

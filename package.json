@@ -4,31 +4,28 @@
   "private": true,
   "dependencies": {
     "@material-ui/codemod": "^1.1.0",
-    "@material-ui/core": "^1.2.0",
+    "@material-ui/core": "^1.2.3",
     "@material-ui/icons": "^1.1.0",
-    "firebase": "^4.8.0",
-    "material-ui": "^0.19.4",
-    "material-ui-autocomplete-google-places": "^2.2.0",
-    "material-ui-places": "^1.1.7",
+    "firebase": "^4.13.1",
     "mui-places-autocomplete": "^2.0.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-ga": "^2.4.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-ga": "^2.5.3",
     "react-google-button": "^0.4.0",
-    "react-google-maps": "^9.2.2",
+    "react-google-maps": "^9.4.5",
     "react-places-autocomplete": "^5.4.3",
-    "react-redux": "^5.0.6",
-    "react-redux-firebase": "^2.0.0-beta.16",
-    "react-redux-form": "^1.16.5",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.0.16",
-    "react-tap-event-plugin": "^3.0.2",
+    "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.1.5",
+    "react-redux-form": "^1.16.9",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.4",
+    "react-tap-event-plugin": "^3.0.3",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
-    "redux-devtools": "^3.4.0",
+    "redux-devtools": "^3.4.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,6 +35,6 @@
     "deploy": "firebase deploy"
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.5"
   }
 }

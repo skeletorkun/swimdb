@@ -3,45 +3,42 @@ import { GuestContainer } from './GuestContainer'
 import { isLoaded, isEmpty } from 'react-redux-firebase'
 import ReactGA from 'react-ga'
 
-import IconMenu from 'material-ui/IconMenu'
-import MenuItem from 'material-ui/MenuItem'
-import Avatar from 'material-ui/Avatar'
-import {ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
+import Menu from '@material-ui/core/Menu'
+import Avatar from '@material-ui/core/Avatar'
+import MenuItem from '@material-ui/core/MenuItem'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
 
-const UserContainer = (props) => {
+class UserContainer extends Component {
     
-    // track user
-    ReactGA.set({ userId: props.profile.email });
-    
-    return (
-        <ToolbarGroup>
-            <ToolbarTitle className='user-info-name' text={ props.profile.displayName } />
-            <IconMenu
-                {...props}
-                    iconButtonElement={
-                    <Avatar alt='' src={props.profile.avatarUrl} width='50px'/>   
-                }
-                targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    render = () => {
+
+        // track user
+        ReactGA.set({ userId: this.props.profile.email });
+
+        return (
+            <div>
+                <IconButton
+                    color="inherit"
                 >
-                <MenuItem primaryText="About" />
-                <MenuItem primaryText="Sign out" onClick={() => props.firebase.logout()} />
-            </IconMenu>
-        </ToolbarGroup>                
-    );
+                    <Avatar alt='' src={this.props.profile.avatarUrl} width='50px' />
+                </IconButton>
+            </div>
+        );
+    }
 };
 
 class UserInfoContainer extends Component {
-    render(){    
+    render() {
         const auth = this.props.auth;
-        if(isEmpty(auth) || !isLoaded(auth)){
-            return GuestContainer(this.props);    
+        if (isEmpty(auth) || !isLoaded(auth)) {
+            return GuestContainer(this.props);
         }
-        else{
-            return UserContainer(this.props);
-        } 
+        else {
+            return <UserContainer {...this.props} />
+        }
     }
-    
+
 }
 
 export default UserInfoContainer;
