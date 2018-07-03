@@ -1,9 +1,0 @@
-.filters-div {
-    display: table-row;
-}
-
-.filters-div > div {
-    float: left;;
-    padding-left: 20px;
-    padding-right: 20px;
-}

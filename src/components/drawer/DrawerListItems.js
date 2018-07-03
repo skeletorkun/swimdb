@@ -2,36 +2,24 @@ import React from 'react'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import DraftsIcon from '@material-ui/icons/Drafts'
-import StarIcon from '@material-ui/icons/Star'
-import SendIcon from '@material-ui/icons/Send'
+import LoginIcon from '@material-ui/icons/PermIdentity'
+import AboutIcon from '@material-ui/icons/Feedback'
+import Divider from '@material-ui/core/Divider'
 
 export const DrawerListItems = (
     <div>
         <ListItem button>
             <ListItemIcon>
-                <InboxIcon />
+                <LoginIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary="Login" />
         </ListItem>
+        <Divider/>
         <ListItem button>
             <ListItemIcon>
-                <StarIcon />
+                <AboutIcon />
             </ListItemIcon>
-            <ListItemText primary="Starred" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary="Send mail" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Drafts" />
+            <ListItemText primary="About" />
         </ListItem>
     </div>
 );

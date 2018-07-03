@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LocationFieldComponent from './../autocomplete/LocationFieldComponent'
+import LocationFieldComponent from './../filters/LocationFieldComponent'
 import { Control, Form} from 'react-redux-form'
 import CustomSelectComponent from './CustomSelectComponent'
 //material ui

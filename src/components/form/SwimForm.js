@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { getCountryFromAddress } from './../autocomplete/LocationFieldComponent'
+import { getCountryFromAddress } from './../filters/LocationFieldComponent'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 import SwimFormComponent from './SwimFormComponent'

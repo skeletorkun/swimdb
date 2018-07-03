@@ -34,7 +34,6 @@ class MenuAppBar extends React.Component {
     render() {
         const { classes } = this.props;
         const { drawerOpen } = this.state;
-        console.log(' state ' + drawerOpen);
         return (
             <div className={classes.root}>
                 <AppBar position="static">

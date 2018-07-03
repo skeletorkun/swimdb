@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {FiltersComponent} from './FiltersComponent'
+import FiltersComponent from './FiltersComponent'
 
 class FiltersContainer extends React.Component {
   
