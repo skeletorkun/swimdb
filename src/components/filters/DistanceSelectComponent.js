@@ -22,7 +22,7 @@ const styles = theme => ({
 class DistanceSelectComponent extends Component {
 
     state = {
-        value: []
+        value: 1
     }
 
     distances = {
@@ -35,9 +35,9 @@ class DistanceSelectComponent extends Component {
     }
 
     handleChange = (event, index, value) => {
-
-        this.setState({ value });
-        this.props.onChange(this.distances[value]);
+        const v = event.target.value;
+        this.setState({value : v });
+        this.props.onChange(this.distances[v]);
     };
     render = () => {
         const { classes } = this.props;

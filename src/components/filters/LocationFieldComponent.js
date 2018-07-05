@@ -47,12 +47,10 @@ class LocationFieldComponent extends Component {
         }
     }
 
-    onSuggestionSelected(suggestion) {
+    onSuggestionSelected = (suggestion) => {
         console.log('Selected suggestion:', suggestion)
-    }
 
-    handleNewRequest = (selectedData, searchedText, selectedDataIndex) => {
-        const address = selectedData.description;
+        const address = suggestion.description;
         this.setState({
             value: address
         });
