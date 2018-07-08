@@ -1,14 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom' 
 
 //material
 import Paper from '@material-ui/core/Paper'
-import Divider from '@material-ui/core/Divider'
-import MenuItem from '@material-ui/core/MenuItem'
-import IconButton from '@material-ui/core/IconButton'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
-import IconDelete from '@material-ui/icons/Delete'
-import IconFeedback from '@material-ui/icons/Feedback'
 import {grey400, darkBlack, lightBlack} from '@material-ui/core/colors'
 
 import CardActions from './CompetitionCardActionsComponent'

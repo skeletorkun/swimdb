@@ -2,20 +2,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import MenuList from '@material-ui/core/MenuList'
+import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import DraftsIcon from '@material-ui/icons/Drafts'
-import SendIcon from '@material-ui/icons/Send'
+import EditIcon from '@material-ui/icons/Edit'
 
-import Divider from '@material-ui/core/Divider'
 import IconDelete from '@material-ui/icons/Delete'
 import IconFeedback from '@material-ui/icons/Feedback'
-import { grey400, darkBlack, lightBlack } from '@material-ui/core/colors'
+import IconButton from '@material-ui/core/IconButton'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 
 const styles = theme => ({
   menuItem: {
@@ -30,43 +27,74 @@ const styles = theme => ({
   icon: {},
 });
 
-const CardActions = (props) => {
-  const { classes } = props;
+class CardActions extends React.Component {
 
-  return (
-    <Paper>
-      <MenuList>
-        <MenuItem className={classes.menuItem}
-          containerElement={<Link to="/edit" />}
-          disabled={!props.canEdit}
-          onClick={() => props.handleCardAction('EDIT')}
+  state = {
+    anchorEl: null,
+  };
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  render() {
+
+    const { anchorEl } = this.state;
+    const { classes } = this.props;
+    const props = this.props;
+    return (
+      <div>
+        <IconButton
+          aria-label="More"
+          aria-owns={anchorEl ? 'actions-menu' : null}
+          aria-haspopup="true"
+          onClick={this.handleClick}
         >
-          <ListItemIcon className={classes.icon}>
-            <SendIcon />
-          </ListItemIcon>
-          <ListItemText classes={{ primary: classes.primary }} inset primary="Sent mail" />
-        </MenuItem>
-        <MenuItem className={classes.menuItem}
-          disabled={!props.canFlag}
-          onClick={() => props.handleCardAction('SEND_FEEDBACK')}
+          <MoreVertIcon />
+        </IconButton>
+        <Menu
+          id="actions-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={this.handleClose}
         >
-          <ListItemIcon className={classes.icon}>
-            <IconFeedback />
-          </ListItemIcon>
-          <ListItemText classes={{ primary: classes.primary }} inset primary="Alert Admin" />
-        </MenuItem>
-        <MenuItem className={classes.menuItem}
-          disabled={!props.canDelete}
-          onClick={() => props.handleCardAction('DELETE')}
-        >
-          <ListItemIcon className={classes.icon}>
-            <IconDelete />
-          </ListItemIcon>
-          <ListItemText classes={{ primary: classes.primary }} inset primary="Delete" />
-        </MenuItem>
-      </MenuList>
-    </Paper>
-  );
+          <Link to="/edit" style={{ textDecoration: 'none', display: 'block' }}>
+            <MenuItem className={classes.menuItem}
+              disabled={!props.canEdit}
+              onClick={() => props.handleCardAction('EDIT')}
+            >
+              <ListItemIcon className={classes.icon}>
+                <EditIcon />
+              </ListItemIcon>
+              <ListItemText classes={{ primary: classes.primary }} inset primary="Edit" />
+            </MenuItem>
+          </Link>
+          <MenuItem className={classes.menuItem}
+            disabled={!props.canFlag}
+            onClick={() => props.handleCardAction('SEND_FEEDBACK')}
+          >
+            <ListItemIcon className={classes.icon}>
+              <IconFeedback />
+            </ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} inset primary="Send feedback" />
+          </MenuItem>
+          <MenuItem className={classes.menuItem}
+            disabled={!props.canDelete}
+            onClick={() => props.handleCardAction('DELETE')}
+          >
+            <ListItemIcon className={classes.icon}>
+              <IconDelete />
+            </ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} inset primary="Delete" />
+          </MenuItem>
+        </Menu>
+      </div>
+    );
+  }
 }
 
 CardActions.propTypes = {
