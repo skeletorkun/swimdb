@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CompetitionCardComponent } from './CompetitionCardComponent'
+import CompetitionCardComponent from './CompetitionCardComponent'
 
 class CompetitionCard extends Component{
 

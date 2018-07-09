@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import { GuestContainer } from './GuestContainer'
 import { isLoaded, isEmpty } from 'react-redux-firebase'
 import ReactGA from 'react-ga'
-
-import Menu from '@material-ui/core/Menu'
 import Avatar from '@material-ui/core/Avatar'
-import MenuItem from '@material-ui/core/MenuItem'
-import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 
 class UserContainer extends Component {

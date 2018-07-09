@@ -47,7 +47,7 @@ class CardActions extends React.Component {
     const { classes } = this.props;
     const props = this.props;
     return (
-      <div>
+      <div align="right">
         <IconButton
           aria-label="More"
           aria-owns={anchorEl ? 'actions-menu' : null}
@@ -62,17 +62,17 @@ class CardActions extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <Link to="/edit" style={{ textDecoration: 'none', display: 'block' }}>
-            <MenuItem className={classes.menuItem}
-              disabled={!props.canEdit}
-              onClick={() => props.handleCardAction('EDIT')}
-            >
-              <ListItemIcon className={classes.icon}>
-                <EditIcon />
-              </ListItemIcon>
-              <ListItemText classes={{ primary: classes.primary }} inset primary="Edit" />
-            </MenuItem>
-          </Link>
+          <MenuItem className={classes.menuItem}
+            component={Link}
+            to={"/edit"}
+            disabled={!props.canEdit}
+            onClick={() => props.handleCardAction('EDIT')}
+          >
+            <ListItemIcon className={classes.icon}>
+              <EditIcon />
+            </ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} inset primary="Edit" />
+          </MenuItem>
           <MenuItem className={classes.menuItem}
             disabled={!props.canFlag}
             onClick={() => props.handleCardAction('SEND_FEEDBACK')}
