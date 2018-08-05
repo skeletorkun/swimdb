@@ -1,16 +1,7 @@
 import React, { Component } from 'react'
 import GooglePlaceAutocomplete from 'mui-places-autocomplete'
 import { geocodeByAddress } from 'react-places-autocomplete'
-import { withStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
-
-const styles = ({
-    autocomplete: {
-        paddingLeft: 10,
-        paddingRight: 20,
-    }
-});
-
 
 export const getCountryFromAddress = (address) => {
     if (!address) {
@@ -27,6 +18,7 @@ export const getCountryFromAddress = (address) => {
 }
 
 class LocationFieldComponent extends Component {
+
     constructor(props) {
         super(props);
         const viewValue = this.props.value;
@@ -35,9 +27,12 @@ class LocationFieldComponent extends Component {
         };
 
         this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange = (e) => {
+        
+        console.log('handleChange on location auto complete:', e)
         this.setState({
             value: e.target.value
         });
@@ -65,13 +60,13 @@ class LocationFieldComponent extends Component {
 
     render = () => {
 
-        const { classes } = this.props;
+        const { customStyle } = this.props;
 
         return (
-            <FormControl className={classes.autocomplete}>
+            <FormControl className={customStyle}>
                 <GooglePlaceAutocomplete
                     name="location"
-                    floatingLabelText="Location"
+                    label="Location"
                     searchText={this.state.value}
                     handleChange={this.handleChange}
                     onSuggestionSelected={this.onSuggestionSelected}
@@ -84,4 +79,4 @@ class LocationFieldComponent extends Component {
     }
 }
 
-export default withStyles(styles)(LocationFieldComponent);
+export default LocationFieldComponent;

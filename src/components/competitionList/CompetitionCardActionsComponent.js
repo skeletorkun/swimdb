@@ -62,7 +62,7 @@ class CardActions extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem className={classes.menuItem}
+          <MenuItem key={1} className={classes.menuItem}
             component={Link}
             to={"/edit"}
             disabled={!props.canEdit}
@@ -73,7 +73,7 @@ class CardActions extends React.Component {
             </ListItemIcon>
             <ListItemText classes={{ primary: classes.primary }} inset primary="Edit" />
           </MenuItem>
-          <MenuItem className={classes.menuItem}
+          <MenuItem key={2} className={classes.menuItem}
             disabled={!props.canFlag}
             onClick={() => props.handleCardAction('SEND_FEEDBACK')}
           >
@@ -82,7 +82,7 @@ class CardActions extends React.Component {
             </ListItemIcon>
             <ListItemText classes={{ primary: classes.primary }} inset primary="Send feedback" />
           </MenuItem>
-          <MenuItem className={classes.menuItem}
+          <MenuItem key={3} className={classes.menuItem}
             disabled={!props.canDelete}
             onClick={() => props.handleCardAction('DELETE')}
           >

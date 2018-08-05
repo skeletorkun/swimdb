@@ -6,9 +6,11 @@ import FormGroup from '@material-ui/core/FormGroup'
 
 const styles = theme => ({
   root: {
-    display: 'table-row',
-    paddingLeft: 20,
-    paddingRight: 20
+    display: 'table-row'
+  },
+  cell:{
+    display: 'table-cell',
+    borderLeft: '10px solid transparent'
   }
 });
 
@@ -30,7 +32,7 @@ class FiltersComponent extends React.Component {
 
     return (
       <FormGroup row className={classes.root}>
-        <LocationFieldComponent onLocationSelected={this.handleLocationSelected} />
+        <LocationFieldComponent onLocationSelected={this.handleLocationSelected} customStyle={classes.cell}/>
         <DistanceSelectComponent onChange={this.handleDistanceSelected} />
       </FormGroup>
     );

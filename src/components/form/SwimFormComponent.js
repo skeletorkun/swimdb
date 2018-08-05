@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LocationFieldComponent from './../filters/LocationFieldComponent'
-import { Control, Form} from 'react-redux-form'
+import { Control, Form } from 'react-redux-form'
 import CustomSelectComponent from './CustomSelectComponent'
 //material ui
 import AppBar from '@material-ui/core/AppBar'
@@ -8,8 +8,17 @@ import IconButton from '@material-ui/core/IconButton'
 import NavigationClose from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-
 import Paper from '@material-ui/core/Paper'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core'
+
+const styles = {
+    flex: {
+        flex: 1,
+    }
+};
+
 
 class SwimFormComponent extends Component {
 
@@ -24,44 +33,56 @@ class SwimFormComponent extends Component {
     customTextField = (props) => {
         return (
             <TextField
-                hintText={props.hintText}
-                floatingLabelText={props.floatingLabelText}
+                id="with-placeholder"
+                label={props.label}
+                placeholder={props.placeholder}
+                style={{
+                    width: 250,
+                }}
+                margin="normal"
                 {...props}
             />
         );
     }
 
     render = () => {
+
+        const { classes } = this.props;
+
         let title = this.props.location.pathname.includes('add') ? "Add New Swim" : "Edit Swim";
         return (
             <div>
-                <AppBar
-                    title={<span >{title}</span>}
-                    iconElementLeft={<IconButton><NavigationClose onClick={this.goBack} /></IconButton>}
-                />
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton style={{ color: 'white' }}><NavigationClose onClick={this.goBack} /></IconButton>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            {title}
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
                 <Form model="formData.swimToEdit" onSubmit={(s) => this.props.handleSubmit(s)}>
-                    <Paper className={'add-new-swim-form'} style={{ margin: '20px', padding: '20px', }}>
+                    <Paper style={{ margin: '20px', padding: '20px', }}>
 
                         <Control model=".competition" component={this.customTextField}
-                            floatingLabelText="Venue Name" hintText="e.g. Swim the Island" /><br />
+                            label="Venue Name" placeholder="e.g. Swim the Island" /><br />
 
                         <Control model=".month" component={CustomSelectComponent}
                             mapProps={{ value: (props) => props.viewValue }}
-                            floatingLabelText="Month" /> <br />
+                            label="Month" /> <br />
 
                         <Control model=".distance" component={this.customTextField}
-                            floatingLabelText="In meters, separated by comma" hintText="e.g. 500, 3500, 5000" /><br />
+                            label="In meters (comma separated)" placeholder="e.g. 500, 3500, 5000" /><br />
 
                         <Control.custom model=".location" component={this.autoComplete}
-                            mapProps={{ onLocationSelected: (props) => props.onChange,  value: (props) => props.viewValue  }} /><br />
+                            mapProps={{ onSuggestionSelected: (props) => props.onChange, value: (props) => props.viewValue}} /><br />
 
                         <Control model=".link" component={this.customTextField}
-                            floatingLabelText="Website" hintText="Url" /><br />
+                            label="Website" placeholder="Url" /><br />
 
-                        <Button style={{ marginTop: '50px' }} primary={true} type="submit">
+                        <Button style={{ marginTop: '50px' }} color="primary" type="submit">
                             Submit
                         </Button>
-                        <Button primary={true} onClick={this.goBack}>
+                        <Button color="primary" onClick={this.goBack}>
                             Cancel
                     </Button>
                     </Paper>
@@ -71,4 +92,4 @@ class SwimFormComponent extends Component {
     }
 };
 
-export default SwimFormComponent;
+export default withStyles(styles)(SwimFormComponent);

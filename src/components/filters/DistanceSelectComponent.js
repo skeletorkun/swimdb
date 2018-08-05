@@ -36,7 +36,7 @@ class DistanceSelectComponent extends Component {
 
     handleChange = (event, index, value) => {
         const v = event.target.value;
-        this.setState({value : v });
+        this.setState({ value: v });
         this.props.onChange(this.distances[v]);
     };
     render = () => {
@@ -53,12 +53,12 @@ class DistanceSelectComponent extends Component {
                         id: 'distance-simple',
                     }}
                 >
-                    <MenuItem value={1} >All</MenuItem>
-                    <MenuItem value={2} >Up to 500m</MenuItem>
-                    <MenuItem value={3} >Up to 5k</MenuItem>
-                    <MenuItem value={4} >5k to 10k</MenuItem>
-                    <MenuItem value={5} >10k to 15k</MenuItem>
-                    <MenuItem value={6} >15k</MenuItem>
+                    <MenuItem key={1} value={1} >All</MenuItem>
+                    <MenuItem key={2} value={2} >Up to 500m</MenuItem>
+                    <MenuItem key={3} value={3} >Up to 5k</MenuItem>
+                    <MenuItem key={4} value={4} >5k to 10k</MenuItem>
+                    <MenuItem key={5} value={5} >10k to 15k</MenuItem>
+                    <MenuItem key={6} value={6} >15k</MenuItem>
                 </Select>
 
             </FormControl>
