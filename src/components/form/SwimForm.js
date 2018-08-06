@@ -22,20 +22,21 @@ class SwimForm extends Component {
 
     handleSubmit = (swim) => {
         if (!swim.location) {
-            console.error('Something went wrong with the autocomplete');
+            console.error('Something went wrong with the autocomplete');            
             return;
         }
 
         console.log('handle submit for a swim ' + JSON.stringify(swim));
+        
+        const newSwim = Object.assign({}, swim);
+        newSwim.location = this.getAddress(swim.location);
 
-        if (swim.id) {
+        if (newSwim.id) {
             //update
-            this.props.updateSwim(swim);
+            this.props.updateSwim(newSwim);
         }
         else {
             //new swim
-            const newSwim = Object.assign({}, swim);
-            newSwim.location = this.getAddress(swim.location);
             this.props.addSwim(newSwim);
         }
 

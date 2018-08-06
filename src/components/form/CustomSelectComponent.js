@@ -27,7 +27,8 @@ class CustomSelectComponent extends Component {
         value: this.props.value
     };
 
-    handleChange = (event, index, value) => {
+    handleChange = (event) => {
+        const value = event.target.value;
         this.setState({ value });
         this.props.onChange(value);
     }
@@ -48,7 +49,7 @@ class CustomSelectComponent extends Component {
                     }}
                 >
                     {this.months.map(m =>
-                        <MenuItem key={m} value={m} >{m}</MenuItem>)}
+                        <MenuItem key={m} value={m}>{m}</MenuItem>)}
                 </Select>
 
             </FormControl>

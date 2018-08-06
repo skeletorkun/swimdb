@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GooglePlaceAutocomplete from 'mui-places-autocomplete'
 import { geocodeByAddress } from 'react-places-autocomplete'
 import FormControl from '@material-ui/core/FormControl'
+import PropTypes from 'prop-types'
 
 export const getCountryFromAddress = (address) => {
     if (!address) {
@@ -27,24 +28,24 @@ class LocationFieldComponent extends Component {
         };
 
         this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
-    handleChange = (e) => {
-        
-        console.log('handleChange on location auto complete:', e)
+    onChange = (e) => {
+            
         this.setState({
             value: e.target.value
         });
 
-        if (!e.target.value) {
-            this.props.onLocationSelected();
+        if (e.target.value === '') {
+            console.log('cleared');
+            this.props.onSelectionChanged('');
         }
     }
 
     onSuggestionSelected = (suggestion) => {
-        console.log('Selected suggestion:', suggestion)
 
+        console.log('Selected suggestion:', suggestion)
         const address = suggestion.description;
         this.setState({
             value: address
@@ -53,7 +54,7 @@ class LocationFieldComponent extends Component {
         geocodeByAddress(address)
             .then(address => {
                 console.log('Selected ' + JSON.stringify(address[0]));
-                this.props.onLocationSelected(address[0]);
+                this.props.onSelectionChanged(address[0]);
             })
             .catch(error => console.error('Error', error))
     }
@@ -67,10 +68,8 @@ class LocationFieldComponent extends Component {
                 <GooglePlaceAutocomplete
                     name="location"
                     label="Location"
-                    searchText={this.state.value}
-                    handleChange={this.handleChange}
                     onSuggestionSelected={this.onSuggestionSelected}
-                    onNewRequest={this.handleNewRequest}
+                    textFieldProps={{ onChange: (e) => this.onChange(e), value: this.state.value, placeholder: 'Search for a place'}}
                     types={['(regions)']}
                     renderTarget={() => (<div />)}
                 />
@@ -78,5 +77,9 @@ class LocationFieldComponent extends Component {
         );
     }
 }
+
+LocationFieldComponent.propTypes = {
+    onSelectionChanged: PropTypes.func.isRequired,
+  }
 
 export default LocationFieldComponent;

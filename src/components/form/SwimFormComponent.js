@@ -74,7 +74,7 @@ class SwimFormComponent extends Component {
                             label="In meters (comma separated)" placeholder="e.g. 500, 3500, 5000" /><br />
 
                         <Control.custom model=".location" component={this.autoComplete}
-                            mapProps={{ onSuggestionSelected: (props) => props.onChange, value: (props) => props.viewValue}} /><br />
+                            mapProps={{ onSelectionChanged: (props) => props.onChange, onCleared: (props) => props.onChange,  value: (props) => props.viewValue}} /><br />
 
                         <Control model=".link" component={this.customTextField}
                             label="Website" placeholder="Url" /><br />

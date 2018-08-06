@@ -32,7 +32,7 @@ class FiltersComponent extends React.Component {
 
     return (
       <FormGroup row className={classes.root}>
-        <LocationFieldComponent onLocationSelected={this.handleLocationSelected} customStyle={classes.cell}/>
+        <LocationFieldComponent onSelectionChanged={this.handleLocationSelected} customStyle={classes.cell}/>
         <DistanceSelectComponent onChange={this.handleDistanceSelected} />
       </FormGroup>
     );
