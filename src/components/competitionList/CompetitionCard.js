@@ -20,7 +20,7 @@ class CompetitionCard extends Component{
           console.error('Unexpected Card Action');
           break;
       }
-    }
+    };
                   
     render = () => {
         return (

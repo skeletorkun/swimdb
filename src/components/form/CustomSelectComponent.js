@@ -9,13 +9,10 @@ import { withStyles } from '@material-ui/core'
 
 const styles = theme => ({
     formControl: {
-        margin: theme.spacing.unit,
         minWidth: 120,
-        paddingLeft: 20,
-        paddingRight: 20
-    },
-    selectEmpty: {
-        marginTop: theme.spacing.unit * 2,
+        maxWidth: 250,
+        margin: 0,
+        padding: 0,
     }
 });
 
@@ -31,7 +28,7 @@ class CustomSelectComponent extends Component {
         const value = event.target.value;
         this.setState({ value });
         this.props.onChange(value);
-    }
+    };
 
     render = () => {
 
@@ -39,7 +36,7 @@ class CustomSelectComponent extends Component {
 
         return (
             <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="month">{this.props.floatingLabelText}</InputLabel>
+                <InputLabel htmlFor="month">{this.props.label}</InputLabel>
                 <Select
                     value={this.state.value}
                     onChange={this.handleChange}
