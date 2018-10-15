@@ -15,6 +15,7 @@
 
 @media screen and (min-width: 1201px) {
     .add-swim-floating-button {display: none !important; }
+    .map-list-switcher-floating-button {display: none !important; }
     .filters-link {display: none !important;}
 }
 

@@ -42,11 +42,12 @@ class CompetitionCardComponent extends React.Component {
 
         const http = swim.link.includes('http') ? '' : 'http://';
         const link = http + swim.link;
+        const linkLabel = swim.link.length > 40 ? 'website' : swim.link;
 
         return (
             <Paper className={classes.card}>
                 <Grid container spacing={16}>
-                    <Grid item xs={11}>
+                    <Grid item xs={10}>
                         <Typography variant="title" gutterBottom>
                             {swim.competition}
                         </Typography>
@@ -56,10 +57,10 @@ class CompetitionCardComponent extends React.Component {
                         <Typography variant="body1" className={classes.details} gutterBottom>
                             Distance(s): {swim.distance} <br/>
                             {swim.month} <br/>
-                            <a href={link} alt='website' target="_blank">{swim.link}</a>
+                            <a href={link} alt='website' target="_blank">{linkLabel}</a>
                         </Typography>
                     </Grid>
-                    <Grid item xs={1}>
+                    <Grid item xs={2}>
                         <CardActions {...actionProps}/>
                     </Grid>
                 </Grid>

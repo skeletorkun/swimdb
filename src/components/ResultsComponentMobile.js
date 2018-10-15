@@ -39,7 +39,7 @@ class ResultsComponentMobile extends React.Component {
             <div style={{height: '100%', width: '100%', overflow: 'hidden'}}>
                 <Compo/>
 
-                <Button variant="fab" mini color="primary" style={{position: 'fixed', left: '20px', top: '80px'}}
+                <Button variant="fab" mini color="primary" className="map-list-switcher-floating-button" style={{position: 'fixed', left: '20px', top: '80px'}}
                         onClick={this.toggle}>
                     <ButtonIcon/>
                 </Button>
