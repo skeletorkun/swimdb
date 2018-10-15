@@ -18,7 +18,7 @@ class SwimForm extends Component {
         address.place_id = geolocation.place_id;
         address.country = getCountryFromAddress(geolocation);
         return address;
-    }
+    };
 
     handleSubmit = (swim) => {
         if (!swim.location) {
@@ -40,9 +40,9 @@ class SwimForm extends Component {
             this.props.addSwim(newSwim);
         }
 
-        console.log('Redirecting to /')
+        console.log('Redirecting to /');
         this.props.history.push('/')
-    }
+    };
 
     render = () => {
 
@@ -72,6 +72,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 // enrich and reassign
-SwimForm = connect(mapStateToProps, mapDispatchToProps)(SwimForm)
+SwimForm = connect(mapStateToProps, mapDispatchToProps)(SwimForm);
 
 export default SwimForm;

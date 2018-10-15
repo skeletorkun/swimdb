@@ -1,19 +1,19 @@
 import React from 'react'
 import MapIcon from '@material-ui/icons/Map'
 import ListIcon from '@material-ui/icons/List'
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 import CompetitionTableComponent from './competitionList/CompetitionTableComponent'
 import SwimMap from './SwimMap'
-import Button from "@material-ui/core/Button/Button";
 
 class ResultsComponentMobile extends React.Component {
     state = {
         value: 0,
     };
 
-    toggle = () => {
-        const newVal = (this.state.value + 1) % 2;
-        this.setState({value: newVal});
+    handleChange = (event, value) => {
+        this.setState({value});
     };
 
     render() {
@@ -33,16 +33,27 @@ class ResultsComponentMobile extends React.Component {
         );
 
         const Compo = this.state.value === 0 ? map : list;
-        const ButtonIcon = () => this.state.value === 0 ? <ListIcon/> : <MapIcon/>;
-
         return (
             <div style={{height: '100%', width: '100%', overflow: 'hidden'}}>
-                <Compo/>
+                <BottomNavigation
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    showLabels
+                >
+                    <BottomNavigationAction
+                        label="Map"
+                        icon={<MapIcon/>}
+                    >
+                        <SwimMap {...this.props} />
+                    </BottomNavigationAction>
+                    <BottomNavigationAction
+                        label="List"
+                        icon={<ListIcon/>}
+                    >
 
-                <Button variant="fab" mini color="primary" style={{position: 'fixed', left: '20px', top: '80px'}}
-                        onClick={this.toggle}>
-                    <ButtonIcon/>
-                </Button>
+                    </BottomNavigationAction>
+                </BottomNavigation>
+                <Compo/>
             </div>
         );
     }

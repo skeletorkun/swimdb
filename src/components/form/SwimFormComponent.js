@@ -74,7 +74,6 @@ class SwimFormComponent extends Component {
                 <Grid container spacing={16} justify={"center"}>
                     <Grid item>
                         <Paper className={classes.form}>
-
                             <Form model="formData.swimToEdit" onSubmit={(s) => this.props.handleSubmit(s)}
                             >
                                 <Grid container spacing={16} direction={"column"}>

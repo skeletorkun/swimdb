@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FiltersContainer from './filters/FiltersContainer'
-import { AddNewLink } from './AddNewLink'
+import AddNewLink  from './AddNewLink'
 import MenuAppBar from './MenuAppBar'
 import ResultsComponentDesktop from './ResultsComponentDesktop'
 import ResultsComponentMobile from './ResultsComponentMobile'

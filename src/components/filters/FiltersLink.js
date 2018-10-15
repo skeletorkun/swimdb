@@ -8,10 +8,10 @@ export const FiltersLink = (props) => {
     const handleClick = () => {
         // props.addCardRequest();
         props.history.push('/filters');
-    }
+    };
     return (
         <IconButton className='filters-link' tooltip="Filters" onClick={handleClick} >
           <IconTune color={grey500}/> 
         </IconButton>
     )
-}
+};

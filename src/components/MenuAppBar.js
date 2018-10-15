@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import UserInfoContainer from './user/UserInfoContainer'
 import TemporaryDrawer from './drawer/TemporaryDrawer'
 import DeleteDialog from "./dialogs/DeleteDialog";
+import {FiltersLink} from "./filters/FiltersLink";
 
 const styles = {
     root: {
@@ -45,6 +46,7 @@ class MenuAppBar extends React.Component {
                         <Typography variant="title" color="inherit" className={classes.flex}>
                             Find Swim
                         </Typography>
+                        <FiltersLink {...this.props}/>
                         <UserInfoContainer {...this.props}/>
                         {showingDialog && <DeleteDialog {...this.props.dialogState}
                                                         onConfirm={this.props.deleteCard}

@@ -1,7 +1,7 @@
 
+/* small screens */
 @media screen and (max-width: 1201px) {
-    
-    
+
     /* hide */
     .add-swim-raised-button {display: none !important; }
     .user-info-name { display: none !important; }
@@ -10,7 +10,7 @@
     /* show */
     .add-swim-floating-button {display: block !important;  z-index: 9999 !important;}
     .filters-link {display: block; }
-    .add-new-swim-form {margin: 0 !important;  }
+    [class*="SwimFormComponent-form-"] {margin: 0 !important; box-shadow: none !important; background: none !important;}
 }
 
 @media screen and (min-width: 1201px) {
