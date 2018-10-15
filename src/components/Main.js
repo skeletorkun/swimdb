@@ -12,7 +12,7 @@ class Main extends Component{
     static propTypes = {
         data: PropTypes.object,
         firebase: PropTypes.object
-    }
+    };
 
     render(){
         return <MainComponent {...this.props}/>;
@@ -44,9 +44,9 @@ function mapDispatchToProps(dispatch){
 // enrich and reassign with Firebase
 Main = firebaseConnect([
     'data'
-])(Main)
+])(Main);
 
 // enrich and reassign
-Main = connect(mapStateToProps, mapDispatchToProps)(Main)
+Main = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default Main;

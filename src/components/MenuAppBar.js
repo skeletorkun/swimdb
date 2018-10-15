@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import {withStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
 import UserInfoContainer from './user/UserInfoContainer'
 import TemporaryDrawer from './drawer/TemporaryDrawer'
+import DeleteDialog from "./dialogs/DeleteDialog";
 
 const styles = {
     root: {
@@ -28,21 +29,26 @@ class MenuAppBar extends React.Component {
     };
 
     toggleDrawer = () => {
-        this.setState({ drawerOpen: !this.state.drawerOpen });
+        this.setState({drawerOpen: !this.state.drawerOpen});
     };
 
     render() {
-        const { classes } = this.props;
-        const { drawerOpen } = this.state;
+        const {classes} = this.props;
+        const {drawerOpen} = this.state;
+        const showingDialog = this.props.dialogState.modalProps.open;
+
         return (
             <div className={classes.root}>
                 <AppBar position="static">
                     <Toolbar>
-                        <TemporaryDrawer isOpen={drawerOpen} toggleDrawer={this.toggleDrawer} />
+                        <TemporaryDrawer isOpen={drawerOpen} toggleDrawer={this.toggleDrawer}/>
                         <Typography variant="title" color="inherit" className={classes.flex}>
                             Find Swim
                         </Typography>
                         <UserInfoContainer {...this.props}/>
+                        {showingDialog && <DeleteDialog {...this.props.dialogState}
+                                                        onConfirm={this.props.deleteCard}
+                                                        hideDeleteDialog={this.props.hideDeleteDialog}/>}
                     </Toolbar>
                 </AppBar>
             </div>

@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import LocationFieldComponent from './../filters/LocationFieldComponent'
 import {Control, Form} from 'react-redux-form'
 import CustomSelectComponent from './CustomSelectComponent'
-//material ui
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
 import NavigationClose from '@material-ui/icons/Close'
@@ -72,7 +71,7 @@ class SwimFormComponent extends Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Grid container spacing={16} justify={"center"} >
+                <Grid container spacing={16} justify={"center"}>
                     <Grid item>
                         <Paper className={classes.form}>
 

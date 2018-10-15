@@ -32,8 +32,6 @@ class TemporaryDrawer extends React.Component {
                     <div
                         tabIndex={0}
                         role="button"
-                        onClick={toggleDrawer}
-                        onKeyDown={toggleDrawer}
                         className={classes.list}
                         >
                         <List>{DrawerListItems}</List>
