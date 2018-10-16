@@ -8,6 +8,9 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
     },
+    rightIcon: {
+        marginLeft: theme.spacing.unit,
+    }
 });
 
 
@@ -18,10 +21,15 @@ const AddNewLink = (props) => {
         props.history.push('/add');
     };
 
+    const { classes } = props;
+
     return (
         <div>
-            <Button className='add-swim-raised-button' style={{ margin: '20px 30px', float: 'right' }} onClick={handleClick}> Add Swim </Button>
-            <Button variant="fab" color="secondary"  className='add-swim-floating-button' style={{ position: 'fixed', right: '20px', bottom: '20px' }} onClick={handleClick}>
+            <Button className='add-swim-raised-button' variant="contained" color="secondary" style={{ margin: '20px 30px', float: 'right' }} onClick={handleClick}>
+                Add Swim
+                <ContentAdd className={classes.rightIcon} />
+            </Button>
+            <Button className='add-swim-floating-button' variant="fab" color="secondary"   style={{ position: 'fixed', right: '20px', bottom: '20px' }} onClick={handleClick}>
                 <ContentAdd />
             </Button>
         </div>
