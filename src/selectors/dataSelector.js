@@ -1,8 +1,9 @@
 
 const countryFilter = (swimLocation, value) =>{
-    
     return swimLocation.toLowerCase().includes(value.toLowerCase());
-}
+};
+
+const monthFilter = (swimMonth, value) => (value === '' || value === 'Any' || swimMonth === value);
 
 const distanceFilter = (swimDistances, filterDistance) => {
     
@@ -19,14 +20,14 @@ const distanceFilter = (swimDistances, filterDistance) => {
     }
     
     return false;
-}
+};
 
 export const getFilteredDataRows = (data, filters) => {
     console.log('getFilteredDataRows ' + JSON.stringify(filters));
 
     const location = filters.location || '';
 
-    var values = []
+    var values = [];
     for(var key in data){
         values.push({...data[key], id: key});
     };
@@ -35,5 +36,6 @@ export const getFilteredDataRows = (data, filters) => {
         values
         .filter((swim) => countryFilter(swim.location.country, location))
         .filter((swim) => distanceFilter(swim.distance, filters.distance))     
+        .filter((swim) => monthFilter(swim.month, filters.month))
     );
-}
+};

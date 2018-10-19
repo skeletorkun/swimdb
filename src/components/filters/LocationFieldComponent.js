@@ -81,6 +81,6 @@ class LocationFieldComponent extends Component {
 
 LocationFieldComponent.propTypes = {
     onSelectionChanged: PropTypes.func.isRequired,
-  }
+  };
 
 export default LocationFieldComponent;

@@ -18,10 +18,10 @@ const styles = theme => ({
 
 class CustomSelectComponent extends Component {
 
-    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    months = ["Any", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     state = {
-        value: this.props.value
+        value: this.props.value || ''
     };
 
     handleChange = (event) => {

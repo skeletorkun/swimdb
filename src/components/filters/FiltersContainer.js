@@ -19,6 +19,6 @@ class FiltersContainer extends React.Component {
 
 FiltersContainer.propTypes = {
   updateFilters : PropTypes.func.isRequired
-}
+};
 
 export default FiltersContainer;

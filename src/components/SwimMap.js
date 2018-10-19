@@ -25,14 +25,14 @@ const Map = compose(
 )((props) =>
 
   <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: 43.7, lng: 7.1 }}
+    defaultZoom={5.2}
+    defaultCenter={{ lat: 46.23, lng: 4.29 }}
     defaultOptions={{
       streetViewControl: false,
       scaleControl: false,
       mapTypeControl: false,
       panControl: false,
-      zoomControl: false,
+      zoomControl: true,
       rotateControl: false,
       fullscreenControl: false
     }}
@@ -68,6 +68,6 @@ class SwimMap extends React.Component {
 SwimMap.propTypes = {
   filteredData: PropTypes.array.isRequired,
   updateFilters: PropTypes.func.isRequired
-}
+};
 
 export default SwimMap;

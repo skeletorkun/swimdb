@@ -3,6 +3,7 @@ import LocationFieldComponent, {getCountryFromAddress} from '../filters/Location
 import DistanceSelectComponent from './DistanceSelectComponent'
 import {withStyles} from '@material-ui/core/styles'
 import FormGroup from '@material-ui/core/FormGroup'
+import CustomSelectComponent from "../form/CustomSelectComponent";
 
 const styles = theme => ({
     root: {
@@ -29,6 +30,11 @@ class FiltersComponent extends React.Component {
         this.props.onChange(value, 'distance');
     };
 
+    handleMonthSelected = (value) => {
+        console.log('handle month selected ' + value);
+        this.props.onChange(value, 'month');
+    };
+
     render() {
 
         const {classes} = this.props;
@@ -36,9 +42,9 @@ class FiltersComponent extends React.Component {
         return (
             <div className={classes.root}>
                 <FormGroup row className={classes.form}>
-                    <LocationFieldComponent onSelectionChanged={this.handleLocationSelected}
-                                            customStyle={classes.cell}/>
+                    <LocationFieldComponent onSelectionChanged={this.handleLocationSelected} customStyle={classes.cell}/>
                     <DistanceSelectComponent onChange={this.handleDistanceSelected}/>
+                    <CustomSelectComponent onChange={this.handleMonthSelected} label="Month"/>
                 </FormGroup>
             </div>
         );

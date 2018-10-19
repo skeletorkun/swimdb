@@ -2,7 +2,8 @@ import {UPDATE_FILTERS} from '../actions/actions'
 
 const defaultFilters = {
     location: '',
-    distance: []
+    distance: [],
+    month: ''
 };
 
 export const filterReducer = (filters = defaultFilters, action) => {

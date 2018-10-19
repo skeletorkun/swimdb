@@ -1,21 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CompetitionCard from './CompetitionCard'
+import Typography from '@material-ui/core/Typography'
 
 import grey from '@material-ui/core/colors/grey'
+
 
 class CompetitionTableComponent extends React.Component {
 
     render() {
 
         if (!this.props.isDataLoaded) {
-            return <h2> Loading... </h2>;
+            return <Typography variant="title" gutterBottom>Loading...</Typography>
         }
 
         const data = this.props.filteredData || [];
 
         if (data.length === 0) {
-            return <h2> No Competitions found </h2>
+            return <Typography variant="title" >No Competitions found</Typography>
         }
 
         const listItems = data.map((swim) =>

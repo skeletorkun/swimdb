@@ -22,8 +22,8 @@ const styles = theme => ({
 class DistanceSelectComponent extends Component {
 
     state = {
-        value: 1
-    }
+        value: ''
+    };
 
     distances = {
         1: [],
@@ -32,7 +32,7 @@ class DistanceSelectComponent extends Component {
         4: [5000, 10000],
         5: [10000, 15000],
         6: [15000, 99999],
-    }
+    };
 
     handleChange = (event, index, value) => {
         const v = event.target.value;
