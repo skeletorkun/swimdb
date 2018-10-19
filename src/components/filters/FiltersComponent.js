@@ -12,13 +12,23 @@ const styles = theme => ({
     form: {
         display: 'table-row'
     },
-    cell: {
-        display: 'table-cell',
-        borderLeft: '10px solid transparent'
+
+    formControl: {
+
+        minWidth: 120,
+        maxWidth: 250,
+        marginLeft: 30,
+        padding: 0,
     }
 });
 
 class FiltersComponent extends React.Component {
+
+    state = {
+        location : this.props.filters.location,
+        distance : this.props.filters.distance,
+        month : this.props.filters.month,
+    };
 
     handleLocationSelected = (value) => {
         const country = getCountryFromAddress(value);
@@ -41,10 +51,10 @@ class FiltersComponent extends React.Component {
 
         return (
             <div className={classes.root}>
-                <FormGroup row className={classes.form}>
-                    <LocationFieldComponent onSelectionChanged={this.handleLocationSelected} customStyle={classes.cell}/>
-                    <DistanceSelectComponent onChange={this.handleDistanceSelected}/>
-                    <CustomSelectComponent onChange={this.handleMonthSelected} label="Month"/>
+                <FormGroup row className={classes.form} >
+                    <LocationFieldComponent onSelectionChanged={this.handleLocationSelected} customStyle={classes.formControl} value={this.state.location} />
+                    <DistanceSelectComponent onChange={this.handleDistanceSelected} customStyle={classes.formControl} value={this.state.distance} />
+                    <CustomSelectComponent onChange={this.handleMonthSelected} label="Month" customStyle={classes.formControl} value={this.state.month} />
                 </FormGroup>
             </div>
         );

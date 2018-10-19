@@ -11,7 +11,7 @@ const styles = theme => ({
     formControl: {
         minWidth: 120,
         maxWidth: 250,
-        margin: 0,
+        marginLeft: 0,
         padding: 0,
     }
 });
@@ -32,10 +32,10 @@ class CustomSelectComponent extends Component {
 
     render = () => {
 
-        const { classes } = this.props;
+        const style = this.props.customStyle || this.props.classes.formControl;
 
         return (
-            <FormControl className={classes.formControl}>
+            <FormControl className={style}>
                 <InputLabel htmlFor="month">{this.props.label}</InputLabel>
                 <Select
                     value={this.state.value}

@@ -6,8 +6,8 @@ const countryFilter = (swimLocation, value) =>{
 const monthFilter = (swimMonth, value) => (value === '' || value === 'Any' || swimMonth === value);
 
 const distanceFilter = (swimDistances, filterDistance) => {
-    
-    const [min, max] = filterDistance;
+
+    const [min, max] = filterDistance.value;
     const filterMin = parseInt(min, 10) || 0;
     const filterMax = parseInt(max, 10) || 9999999999;
 

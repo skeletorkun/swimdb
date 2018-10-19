@@ -16,7 +16,7 @@ export const getCountryFromAddress = (address) => {
         console.log(error);
         return '';
     }
-}
+};
 
 class LocationFieldComponent extends Component {
 
