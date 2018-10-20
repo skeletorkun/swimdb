@@ -25,7 +25,7 @@ const AddNewLink = (props) => {
 
     return (
         <div>
-            <Button className='add-swim-raised-button' variant="contained" color="secondary" style={{ margin: '20px 30px', float: 'right' }} onClick={handleClick}>
+            <Button className='add-swim-raised-button' variant="contained" color="secondary" style={{ marginRight: '30px', marginTop:'20px', float: 'right' }} onClick={handleClick}>
                 Add Swim
                 <ContentAdd className={classes.rightIcon} />
             </Button>
