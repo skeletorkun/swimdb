@@ -45,7 +45,7 @@ class FiltersComponent extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={16} justify="flex-start" direction="row" alignItems="flex-end">
+                <Grid container spacing={16} justify="flex-start" direction="column" alignItems="flex-start">
                     <Grid item>
                         <LocationFieldComponent onSelectionChanged={this.handleLocationSelected}
                                                 customStyle={classes.formControl}

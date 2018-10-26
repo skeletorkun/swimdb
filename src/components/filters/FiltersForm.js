@@ -1,14 +1,22 @@
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { firebaseConnect} from 'react-redux-firebase'
-import { updateFilters } from './../../actions/actions'
-import FiltersContainer from './FiltersContainer'
-
+import React, {Component} from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {firebaseConnect} from 'react-redux-firebase'
+import {updateFilters} from './../../actions/actions'
 //material ui
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
 import NavigationClose from '@material-ui/icons/Close'
+import Toolbar from "@material-ui/core/Toolbar/Toolbar";
+import Typography from "@material-ui/core/Typography/Typography";
+import {withStyles} from '@material-ui/core'
+import FiltersComponentMobile from "./FiltersComponentMobile";
+
+const styles = {
+    flex: {
+        flex: 1,
+    },
+};
 
 class FiltersForm extends Component {
 
@@ -16,15 +24,22 @@ class FiltersForm extends Component {
 
     render = () => {
         let title = "Filters";
-        return (
-            <div >
-                <AppBar
-                    title={<span >{title}</span>}
-                    iconElementLeft={<IconButton><NavigationClose onClick={this.goBack} /></IconButton>}
-                />
 
-                <div style={{ padding: '20px' }}>
-                    <FiltersContainer {...this.props} />
+        const {classes} = this.props;
+
+        return (
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton style={{color: 'white'}}><NavigationClose onClick={this.goBack}/></IconButton>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            {title}
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+
+                <div style={{padding: '20px'}}>
+                    <FiltersComponentMobile {...this.props}/>
                 </div>
             </div>
         );
@@ -37,15 +52,15 @@ FiltersForm = firebaseConnect()(FiltersForm);
 
 function mapStateToProps(state) {
     return {
-        filters : state.filters,
+        filters: state.filters,
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ updateFilters }, dispatch);
+    return bindActionCreators({updateFilters}, dispatch);
 }
 
 // enrich and reassign
 FiltersForm = connect(mapStateToProps, mapDispatchToProps)(FiltersForm)
 
-export default FiltersForm;
+export default withStyles(styles)(FiltersForm);

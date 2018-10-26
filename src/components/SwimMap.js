@@ -32,7 +32,7 @@ const Map = compose(
       scaleControl: false,
       mapTypeControl: false,
       panControl: false,
-      zoomControl: true,
+      zoomControl: false,
       rotateControl: false,
       fullscreenControl: false
     }}

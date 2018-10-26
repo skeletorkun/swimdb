@@ -25,16 +25,18 @@
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set GENERATE_SOURCEMAP=false && react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "firebase deploy"
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.5"
+    "redux-devtools-extension": "^2.13.5",
+    "prop-types": "latest"
   }
 }
