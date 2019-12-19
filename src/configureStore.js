@@ -9,6 +9,7 @@ import { fbConfig, rrfConfig } from './firebase'
 const configureStore = (initialState = {}) => {
 
     firebase.initializeApp(fbConfig);
+    firebase.analytics();
     console.log('Firebase initialized');
 
     const middlewares = [thunk.withExtraArgument(getFirebase)];

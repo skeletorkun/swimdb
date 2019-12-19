@@ -10,7 +10,9 @@ export const fbConfig = {
     databaseURL: "https://swimdb-6c705.firebaseio.com",
     projectId: "swimdb-6c705",
     storageBucket: "swimdb-6c705.appspot.com",
-    messagingSenderId: "347534745013"
+    messagingSenderId: "347534745013",
+    appId: "1:347534745013:web:644fab5dbc6303e7cf4dfc",
+    measurementId: "G-8FZHFRFPN8"
 }
 
 
