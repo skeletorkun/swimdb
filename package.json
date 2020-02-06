@@ -8,7 +8,9 @@
     "@material-ui/icons": "^1.1.0",
     "firebase": "^4.13.1",
     "mui-places-autocomplete": "^2.0.0",
+    "prop-types": "latest",
     "react": "^16.3.0",
+    "react-device-detect": "^1.11.14",
     "react-dom": "^16.3.0",
     "react-ga": "^2.5.3",
     "react-google-button": "^0.4.0",
@@ -25,8 +27,7 @@
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "prop-types": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

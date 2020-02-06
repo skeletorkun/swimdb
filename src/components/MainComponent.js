@@ -5,6 +5,8 @@ import AddNewLink from './AddNewLink'
 import MenuAppBar from './MenuAppBar'
 import ResultsComponentDesktop from './ResultsComponentDesktop'
 import ResultsComponentMobile from './ResultsComponentMobile'
+import {isMobile} from 'react-device-detect';
+
 import './Main.css'
 
 
@@ -12,7 +14,6 @@ class MainComponent extends React.Component {
 
     render() {
 
-        const isMobile = window.innerWidth <= 500;
         const title = isMobile  ? "Find Swim" : "Find Swim - Open Water Swimming Database";
         const ResultsComponent = isMobile ? ResultsComponentMobile : ResultsComponentDesktop;
 

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 import { GuestContainer } from './GuestContainer'
 
 class LoginContainer extends Component {
-   
-    render(){    
+
+    render(){
         const loginPageContent = GuestContainer(this.props);
         if(this.props.hasAuth){
             return <Redirect to={{ pathname: '/', state: { from: this.props.location }}}/>
@@ -20,7 +20,7 @@ class LoginContainer extends Component {
 
 LoginContainer.propTypes = {
     hasAuth : PropTypes.bool,    
-}
+};
 
 function mapStateToProps(state){
     const auth = state.firebase.auth;
