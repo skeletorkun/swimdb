@@ -44,7 +44,7 @@ class MenuAppBar extends React.Component {
                     <Toolbar>
                         <TemporaryDrawer isOpen={drawerOpen} toggleDrawer={this.toggleDrawer}/>
                         <Typography variant="title" color="inherit" className={classes.flex}>
-                            Find Swim
+                            {this.props.title}
                         </Typography>
                         <FiltersLink {...this.props}/>
                         <UserInfoContainer {...this.props}/>

@@ -13,12 +13,12 @@ class MainComponent extends React.Component {
     render() {
 
         const isMobile = window.innerWidth <= 500;
-
+        const title = isMobile  ? "Find Swim" : "Find Swim - Open Water Swimming Database";
         const ResultsComponent = isMobile ? ResultsComponentMobile : ResultsComponentDesktop;
 
         return (
             <div style={{height: '100%', width: '100%', overflow: 'hidden'}}>
-                <MenuAppBar {...this.props} />
+                <MenuAppBar {...this.props} title={title} />
                 <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>
                 <div className='filters-container-big' >
                     <FiltersContainer {...this.props} />
