@@ -24,3 +24,7 @@ yarn-error.log*
 \.idea/
 
 *.bak
+
+firebase-debug\.log
+
+*.cache

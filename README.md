@@ -5,6 +5,15 @@ Welcome to findswim.com
 
 This project aims to help open water swimmers find competitions around the world easily. 
 
+ 
+ 
+Setup
+---
+ 
+```
+npm install
+```
+ 
 Usage
 ---
  
@@ -15,29 +24,18 @@ npm start
 ```
  
  
- 
-Setup
+Build
 ---
- 
-```
-npm install
-```
- 
- 
- 
-Compile
----
- 
-```
-npm run compile
-
-
- 
-Deploy
----
-
-Deploy on Firebase
  
 ```
 npm run build
-firebase deploy
+```
+
+Deploy on Firebase
+---
+ 
+ 
+```
+sudo firebase login
+sudo firebase deploy
+```
