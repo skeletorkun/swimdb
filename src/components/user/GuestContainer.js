@@ -7,10 +7,10 @@ import IconAccountCircle from '@material-ui/icons/AccountCircle'
 
 export const GuestContainer = (props) => {
 
-    const Compo = () => isMobile ?
-        <IconButton  style={{ color: 'white' }} tooltip="Login" >
+    const Compo = (props) => isMobile ?
+        <IconButton  style={{ color: 'white' }} tooltip="Login" {...props}>
             <IconAccountCircle/>
-        </IconButton>: <GoogleButton/>;
+        </IconButton>: <GoogleButton {...props}/>;
     return (
         <div>
             <Compo
