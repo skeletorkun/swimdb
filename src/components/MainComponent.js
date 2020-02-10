@@ -14,17 +14,18 @@ class MainComponent extends React.Component {
 
     render() {
 
-        const title = isMobile  ? "Find Swim" : "Find Swim - Open Water Swimming Database";
+        const title = isMobile ? "Find Swim" : "Find Swim - Open Water Swimming Database";
         const ResultsComponent = isMobile ? ResultsComponentMobile : ResultsComponentDesktop;
 
         return (
-            <div style={{height: '100%', width: '100%', overflow: 'hidden'}}>
-                <MenuAppBar {...this.props} title={title} />
-                <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>
-                <div className='filters-container-big' >
-                    <FiltersContainer {...this.props} />
+            <div className={'main-compo'}>
+                <MenuAppBar {...this.props} title={title}/>
+                <div style={{display: 'flex',  marginTop: '10px', marginBottom: '10px'}}>
+                    <FiltersContainer {...this.props}/>
+                    <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>
                 </div>
-                <ResultsComponent  {...this.props} />
+                <ResultsComponent {...this.props}/>
+                <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>
             </div>
         );
     }
@@ -34,6 +35,6 @@ MainComponent.propTypes = {
     filters: PropTypes.object.isRequired,
     filteredData: PropTypes.array.isRequired,
     updateFilters: PropTypes.func.isRequired
-}
+};
 
 export default MainComponent;

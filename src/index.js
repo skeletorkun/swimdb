@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Main from './components/Main'
-import LoginComponent from './components/user/LoginContainer'
+import LoginContainer from './components/user/LoginContainer'
 import SwimForm from './components/form/SwimForm'
 import FiltersForm from './components/filters/FiltersForm'
 import configureStore from './configureStore'
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={ withTracker(Main) }/>
-            <Route exact path='/login' component={  withTracker(LoginComponent) }/>
+            <Route exact path='/login' component={  withTracker(LoginContainer) }/>
             <Route path='/add' component={ withTracker(SwimForm) } />
             <Route path='/edit' component={  withTracker(SwimForm) } />
             <Route path='/filters' component={  withTracker(FiltersForm) } />

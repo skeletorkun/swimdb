@@ -1,5 +1,5 @@
 import React from 'react'
-import UserInfoContainer from './user/UserInfoContainer'
+import UserInfoComponent from './user/UserInfoComponent'
 import AboutDialog from './dialogs/AboutDialog'
 import DeleteDialog from './dialogs/DeleteDialog'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from '@material-ui/core/Toolbar'
@@ -19,7 +19,7 @@ export const AppBarContainer = (props) => {
             </ToolbarGroup>
             <ToolbarGroup>
                 <FiltersLink {...props}/>
-                <UserInfoContainer auth={props.auth} profile={props.profile} firebase={props.firebase}/>
+                <UserInfoComponent auth={props.auth} profile={props.profile} firebase={props.firebase}/>
             </ToolbarGroup>
         </Toolbar>
     );

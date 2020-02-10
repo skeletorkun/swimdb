@@ -12,7 +12,9 @@ class FiltersContainer extends React.Component {
 
     render() {
         return (
-            <FiltersComponent onChange={this.handleChange.bind(this)} filters={this.props.filters}/>
+            <div className='filters-container-big' >
+                <FiltersComponent onChange={this.handleChange.bind(this)} filters={this.props.filters}/>
+            </div>
         );
     }
 }

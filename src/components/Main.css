@@ -1,22 +1,58 @@
-
 /* small screens */
 @media screen and (max-width: 1201px) {
 
     /* hide */
-    .add-swim-raised-button {display: none !important; }
-    .user-info-name { display: none !important; }
-    .filters-container-big {display: none;}
-    
+    .add-swim-raised-button {
+        display: none !important;
+    }
+
+    .user-info-name {
+        display: none !important;
+    }
+
+    .filters-container-big {
+        display: none;
+    }
+
     /* show */
-    .add-swim-floating-button {display: block !important;  z-index: 9999 !important;}
-    .filters-link {display: block; }
-    [class*="SwimFormComponent-form-"] {margin: 0 !important; box-shadow: none !important; background: none !important;}
+    .add-swim-floating-button {
+        display: block !important;
+        /*z-index: 9999 !important;*/
+    }
+
+    .filters-link {
+        display: block;
+    }
+
+    [class*="SwimFormComponent-form-"] {
+        margin: 0 !important;
+        box-shadow: none !important;
+        background: none !important;
+    }
 }
 
+/*desktops*/
 @media screen and (min-width: 1201px) {
-    .filters-container-big {display: flex;}
-    .add-swim-floating-button {display: none !important; }
-    .map-list-switcher-floating-button {display: none !important; }
-    .filters-link {display: none !important;}
+    .filters-container-big {
+        width: 66%;
+        display: flex;
+    }
+
+    .add-swim-floating-button {
+        display: none !important;
+    }
+
+    .map-list-switcher-floating-button {
+        display: none !important;
+    }
+
+    .filters-link {
+        display: none !important;
+    }
 }
 
+.main-compo{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}

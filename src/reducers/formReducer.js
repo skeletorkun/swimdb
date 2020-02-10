@@ -10,7 +10,7 @@ const swimToEditReducer = (swim = {}, action) => {
         default:
             return swim;
     }
-}
+};
 
 export const formReducer = combineForms( {
     swimToEdit : swimToEditReducer

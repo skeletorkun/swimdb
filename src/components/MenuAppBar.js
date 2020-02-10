@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
-import UserInfoContainer from './user/UserInfoContainer'
+import UserInfoComponent from './user/UserInfoComponent'
 import TemporaryDrawer from './drawer/TemporaryDrawer'
 import DeleteDialog from "./dialogs/DeleteDialog";
 import {FiltersLink} from "./filters/FiltersLink";
@@ -47,7 +47,7 @@ class MenuAppBar extends React.Component {
                             {this.props.title}
                         </Typography>
                         <FiltersLink {...this.props}/>
-                        <UserInfoContainer {...this.props}/>
+                        <UserInfoComponent {...this.props}/>
                         {showingDialog && <DeleteDialog {...this.props.dialogState}
                                                         onConfirm={this.props.deleteCard}
                                                         hideDeleteDialog={this.props.hideDeleteDialog}/>}
