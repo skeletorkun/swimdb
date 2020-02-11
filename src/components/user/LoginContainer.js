@@ -11,7 +11,7 @@ class LoginContainer extends Component {
         if (this.props.hasAuth) {
             return <Redirect to={{pathname: '/', state: {from: this.props.location}}}/>
         } else {
-            return <LoginComponent {...this.props} />;
+            return <LoginComponent firebase={this.props.firebase} />;
         }
     }
 }

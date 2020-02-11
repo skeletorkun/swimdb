@@ -63,7 +63,7 @@ export default class GuestComponent extends Component {
                         {"Login"}
                     </DialogTitle>
                     <DialogContent>
-                        <LoginComponent firebase/>
+                        <LoginComponent firebase={firebase}/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary">
