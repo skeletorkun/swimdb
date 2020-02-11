@@ -9,6 +9,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Dialog from "@material-ui/core/Dialog";
+import Grid from "@material-ui/core/Grid/Grid";
+
 
 export default class GuestComponent extends Component {
 
@@ -50,9 +52,7 @@ export default class GuestComponent extends Component {
 
         return (
             <div>
-
                 <LoginButton/>
-
                 <Dialog
                     open={this.state.showingModal}
                     onClose={this.handleClose}
@@ -63,12 +63,7 @@ export default class GuestComponent extends Component {
                         {"Login"}
                     </DialogTitle>
                     <DialogContent>
-                        <div style={{padding: '20px'}}>
-                            <GoogleLoginButton onClick={() => firebase.login({provider: 'google', type: 'popup'})}/>
-                        </div>
-                        <div style={{padding: '20px'}}>
-                            <FacebookLoginButton onClick={() => firebase.login({provider: 'facebook', type: 'popup'})}/>
-                        </div>
+                        <LoginComponent firebase/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary">
@@ -82,7 +77,24 @@ export default class GuestComponent extends Component {
     }
 }
 
+export const LoginComponent = ({firebase}) =>
+    <div style={{flex: '1', marginTop:'100px'}}>
+        <Grid container spacing={16} justify={"center"} alignItems="center">
+            <Grid item>
+                <Grid container spacing={16} direction={"column"} alignItems="center">
+                    <Grid item>
+                        <GoogleLoginButton onClick={() => firebase.login({provider: 'google', type: 'popup'})}
+                        />
 
+                    </Grid>
+                    <Grid item>
+                        <FacebookLoginButton
+                            onClick={() => firebase.login({provider: 'facebook', type: 'popup'})}/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </div>
 GuestComponent.propTypes = {
     firebase: PropTypes.object,
 };

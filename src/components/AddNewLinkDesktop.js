@@ -12,22 +12,6 @@ const styles = theme => ({
     }
 });
 
-
-const AddNewLinkMobile = (props) => {
-
-    const handleClick = () => {
-        props.addCardRequest();
-        props.history.push('/add');
-    };
-
-    return (
-        <Button className='add-swim-floating-button' variant="fab" color="secondary"
-                style={{position: 'fixed', right: '20px', bottom: '20px'}} onClick={handleClick}>
-            <ContentAdd/>
-        </Button>
-    )
-};
-
 const AddNewLinkDesktop = (props) => {
 
     const handleClick = () => {
@@ -39,7 +23,7 @@ const AddNewLinkDesktop = (props) => {
 
     return (
         <div style={{width: '33%'}}>
-            <Button className='add-swim-raised-button' variant="contained" color="secondary" style={{float: 'right'}}
+            <Button className='add-swim-raised-button' variant="contained" color="secondary"
                     onClick={handleClick}>
                 Add Swim
                 <ContentAdd className={classes.rightIcon}/>
@@ -49,4 +33,3 @@ const AddNewLinkDesktop = (props) => {
 };
 
 export default withStyles(styles)(AddNewLinkDesktop);
-export default withStyles(styles)(AddNewLinkMobile);

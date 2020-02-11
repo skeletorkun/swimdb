@@ -18,6 +18,9 @@
     .add-swim-floating-button {
         display: block !important;
         /*z-index: 9999 !important;*/
+        position: fixed;
+        maring-right: 20px;
+        margin-bottom: 20px;
     }
 
     .filters-link {
@@ -36,6 +39,10 @@
     .filters-container-big {
         width: 66%;
         display: flex;
+    }
+
+    .add-swim-raised-button {
+        float: right;
     }
 
     .add-swim-floating-button {

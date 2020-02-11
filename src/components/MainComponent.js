@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FiltersContainer from './filters/FiltersContainer'
-import AddNewLink from './AddNewLink'
+import AddNewLinkDesktop from './AddNewLinkDesktop'
+import AddNewLinkMobile from './AddNewLinkMobile'
 import MenuAppBar from './MenuAppBar'
 import ResultsComponentDesktop from './ResultsComponentDesktop'
 import ResultsComponentMobile from './ResultsComponentMobile'
@@ -22,10 +23,10 @@ class MainComponent extends React.Component {
                 <MenuAppBar {...this.props} title={title}/>
                 <div style={{display: 'flex',  marginTop: '10px', marginBottom: '10px'}}>
                     <FiltersContainer {...this.props}/>
-                    <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>
+                    <AddNewLinkDesktop addCardRequest={this.props.addCardRequest} history={this.props.history}/>
                 </div>
                 <ResultsComponent {...this.props}/>
-                <AddNewLink addCardRequest={this.props.addCardRequest} history={this.props.history}/>
+                <AddNewLinkMobile addCardRequest={this.props.addCardRequest} history={this.props.history}/>
             </div>
         );
     }
