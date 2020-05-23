@@ -1,20 +1,18 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {firebaseConnect, isEmpty, isLoaded} from 'react-redux-firebase'
 import PropTypes from 'prop-types'
 import {LoginComponent} from './GuestComponent'
 
-class LoginContainer extends Component {
+let LoginContainer = ({hasAuth, location, firebase}) => {
 
-    render() {
-        if (this.props.hasAuth) {
-            return <Redirect to={{pathname: '/', state: {from: this.props.location}}}/>
-        } else {
-            return <LoginComponent firebase={this.props.firebase} />;
-        }
+    if (hasAuth) {
+        return <Redirect to={{pathname: '/', state: {from: location}}}/>
+    } else {
+        return <LoginComponent firebase={firebase}/>;
     }
-}
+};
 
 LoginContainer.propTypes = {
     hasAuth: PropTypes.bool,
@@ -32,6 +30,6 @@ function mapStateToProps(state) {
 LoginContainer = firebaseConnect()(LoginContainer);
 
 // enrich and reassign
-LoginContainer = connect(mapStateToProps)(LoginContainer)
+LoginContainer = connect(mapStateToProps)(LoginContainer);
 
 export default LoginContainer;
