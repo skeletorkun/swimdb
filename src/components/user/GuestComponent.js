@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {isMobile} from 'react-device-detect';
 import IconButton from "@material-ui/core/IconButton";
@@ -12,79 +12,71 @@ import Dialog from "@material-ui/core/Dialog";
 import Grid from "@material-ui/core/Grid/Grid";
 
 
-export default class GuestComponent extends Component {
+export default function GuestComponent({firebase}) {
 
-    state = {
-        showingModal: false,
+    const [showingModal, setShowingModal] = useState(false);
+
+    const handleOpen = () => {
+        setShowingModal(true);
     };
 
-    handleOpen = () => {
-        this.setState({showingModal: true});
+    const handleClose = () => {
+        setShowingModal(false);
     };
 
-    handleClose = () => {
-        this.setState({showingModal: false});
-    };
+    const LoginButtonMobile = () =>
+        <div>
+            <IconButton style={{color: 'white'}}
+                        variant="contained" tooltip="Login" onClick={handleOpen}>
+                <IconAccountCircle/>
+            </IconButton>
+        </div>;
 
-    render() {
+    const LoginButtonDesktop = () =>
+        <div style={{marginRight: '5px', float: 'right'}}>
+            <Button variant="contained" color="primary" onClick={handleOpen}
+            >
+                Login
+            </Button></div>;
 
-        let firebase = this.props.firebase;
+    const LoginButton = () => isMobile ?
+        <LoginButtonMobile /> :
+        <LoginButtonDesktop />;
 
-        const LoginButtonMobile = (props) =>
-            <div>
-                <IconButton style={{color: 'white'}}
-                            variant="contained" tooltip="Login" {...props}>
-                    <IconAccountCircle/>
-                </IconButton>
-            </div>;
+    return (
+        <div>
+            <LoginButton/>
+            <Dialog
+                open={showingModal}
+                onClose={handleClose}
+                fullScreen={isMobile}
+                keepMounted
+            >
+                <DialogTitle style={{textAlign: "center"}}>
+                    {"Login"}
+                </DialogTitle>
+                <DialogContent>
+                    <LoginComponent firebase={firebase}/>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
-        const LoginButtonDesktop = (props) =>
-            <div style={{marginRight: '5px', float: 'right'}}>
-                <Button variant="contained" color="primary"
-                        {...props}>
-                    Login
-                </Button></div>;
-
-        const LoginButton = () => isMobile ?
-            <LoginButtonMobile onClick={this.handleOpen}/> :
-            <LoginButtonDesktop  onClick={this.handleOpen}/>;
-
-        return (
-            <div>
-                <LoginButton/>
-                <Dialog
-                    open={this.state.showingModal}
-                    onClose={this.handleClose}
-                    fullScreen={isMobile}
-                    keepMounted
-                >
-                    <DialogTitle style={{textAlign: "center"}}>
-                        {"Login"}
-                    </DialogTitle>
-                    <DialogContent>
-                        <LoginComponent firebase={firebase}/>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
-                            Close
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
 export const LoginComponent = ({firebase}) =>
-    <div style={{flex: '1', marginTop:'100px'}}>
+    <div style={{flex: '1', marginTop: '100px'}}>
         <Grid container spacing={16} justify={"center"} alignItems="center">
             <Grid item>
                 <Grid container spacing={16} direction={"column"} alignItems="center">
                     <Grid item>
                         <GoogleLoginButton onClick={() => firebase.login({provider: 'google', type: 'popup'})}
                         />
-
                     </Grid>
                     <Grid item>
                         <FacebookLoginButton
@@ -93,7 +85,9 @@ export const LoginComponent = ({firebase}) =>
                 </Grid>
             </Grid>
         </Grid>
-    </div>
+    </div>;
+
+
 GuestComponent.propTypes = {
     firebase: PropTypes.object,
 };
