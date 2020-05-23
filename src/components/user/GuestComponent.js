@@ -32,7 +32,6 @@ export default class GuestComponent extends Component {
 
         const LoginButtonMobile = (props) =>
             <div>
-
                 <IconButton style={{color: 'white'}}
                             variant="contained" tooltip="Login" {...props}>
                     <IconAccountCircle/>
@@ -47,8 +46,8 @@ export default class GuestComponent extends Component {
                 </Button></div>;
 
         const LoginButton = () => isMobile ?
-            <LoginButtonMobile {...this.props} onClick={this.handleOpen}/> :
-            <LoginButtonDesktop {...this.props} onClick={this.handleOpen}/>;
+            <LoginButtonMobile onClick={this.handleOpen}/> :
+            <LoginButtonDesktop  onClick={this.handleOpen}/>;
 
         return (
             <div>

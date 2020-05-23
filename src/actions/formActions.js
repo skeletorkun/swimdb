@@ -13,7 +13,7 @@ export const addSwim = (swim) => (dispatch, getState, getFirebase) => {
   newSwimRef.set(swim)
     .then(console.log('Success in firebase call.'))
     .catch(error => console.error('Error updating firebase.'));
-}
+};
 
 export const updateSwim = (swim) => (dispatch, getState, getFirebase) => {
 
@@ -27,5 +27,5 @@ export const updateSwim = (swim) => (dispatch, getState, getFirebase) => {
   dataRef.child(swim.id).update(swim)
     .then(console.log('Success in firebase call.'))
     .catch(error => console.error('Error updating firebase.'));
-}
+};
 

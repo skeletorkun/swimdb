@@ -9,8 +9,7 @@ const defaultFilters = {
 export const filterReducer = (filters = defaultFilters, action) => {
     switch(action.type){
         case UPDATE_FILTERS:
-            const newFilters = Object.assign({}, filters, action.filters);
-            return newFilters;            
+            return Object.assign({}, filters, action.filters);
         default:
             return filters;
     }

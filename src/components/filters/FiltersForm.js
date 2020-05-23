@@ -18,6 +18,7 @@ const styles = {
     },
 };
 
+// todo change this with https://thoughtbot.com/blog/using-redux-with-react-hooks
 class FiltersForm extends Component {
 
     goBack = () => this.props.history.push('/');
