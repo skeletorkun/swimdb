@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button/Button";
 
 class ResultsComponentMobile extends React.Component {
     state = {
-        value: 0,
+        value: 1,
     };
 
     toggle = () => {
