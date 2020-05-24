@@ -1,43 +1,40 @@
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import React from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {firebaseConnect, isEmpty, isLoaded} from 'react-redux-firebase'
 import MainComponent from './MainComponent'
 import * as actionCreators from './../actions/actions'
-import { getFilteredDataRows } from './../selectors/dataSelector'
+import {getFilteredDataRows} from './../selectors/dataSelector'
+import PropTypes from "prop-types";
 
-class Main extends Component{
+let Main = (props) => {
+    return <MainComponent {...props}/>;
+};
 
-    static propTypes = {
-        data: PropTypes.object,
-        firebase: PropTypes.object
-    };
+Main.propTypes = {
+    data: PropTypes.object,
+    firebase: PropTypes.object
+};
 
-    render(){
-        return <MainComponent {...this.props}/>;
-    }
-}
+function mapStateToProps(state) {
 
-function mapStateToProps(state){
-    
     const fb = state.firebase;
-    const data = fb.data.data;    
+    const data = fb.data.data;
     const auth = fb.auth;
     return {
-        auth: auth,        
+        auth: auth,
         profile: fb.profile,
-        filters : state.filters,
-        dialogState : state.dialogState,
-        filteredData : getFilteredDataRows(data, state.filters),
-        selectedId : state.selectedId,
-        isDataLoaded : isLoaded(data),
-        isDataEmpty : isEmpty(data),
-        hasAuth : isLoaded(auth) && !isEmpty(auth),
+        filters: state.filters,
+        dialogState: state.dialogState,
+        filteredData: getFilteredDataRows(data, state.filters),
+        selectedId: state.selectedId,
+        isDataLoaded: isLoaded(data),
+        isDataEmpty: isEmpty(data),
+        hasAuth: isLoaded(auth) && !isEmpty(auth),
     }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch);
 }
 
