@@ -11,26 +11,23 @@ import {isMobile} from 'react-device-detect';
 import './Main.css'
 
 
-class MainComponent extends React.Component {
+let MainComponent = (props) => {
 
-    render() {
+    const title = isMobile ? "Find Swim" : "Find Swim - Open Water Swimming Database";
+    const ResultsComponent = isMobile ? ResultsComponentMobile : ResultsComponentDesktop;
 
-        const title = isMobile ? "Find Swim" : "Find Swim - Open Water Swimming Database";
-        const ResultsComponent = isMobile ? ResultsComponentMobile : ResultsComponentDesktop;
-
-        return (
-            <div className={'main-compo'}>
-                <MenuAppBar {...this.props} title={title}/>
-                <div style={{display: 'flex',  marginTop: '10px', marginBottom: '10px'}}>
-                    <FiltersContainer {...this.props}/>
-                    <AddNewLinkDesktop addCardRequest={this.props.addCardRequest} history={this.props.history}/>
-                </div>
-                <ResultsComponent {...this.props}/>
-                <AddNewLinkMobile addCardRequest={this.props.addCardRequest} history={this.props.history}/>
+    return (
+        <div className={'main-compo'}>
+            <MenuAppBar {...props} title={title}/>
+            <div style={{display: 'flex',  marginTop: '10px', marginBottom: '10px'}}>
+                <FiltersContainer {...props}/>
+                <AddNewLinkDesktop addCardRequest={props.addCardRequest} history={props.history}/>
             </div>
-        );
-    }
-}
+            <ResultsComponent {...props}/>
+            <AddNewLinkMobile addCardRequest={props.addCardRequest} history={props.history}/>
+        </div>
+    );
+};
 
 MainComponent.propTypes = {
     filters: PropTypes.object.isRequired,

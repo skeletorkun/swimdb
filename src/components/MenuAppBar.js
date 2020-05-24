@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -23,40 +23,34 @@ const styles = {
     },
 };
 
-class MenuAppBar extends React.Component {
-    state = {
-        auth: true,
-        drawerOpen: false,
+let MenuAppBar = (props) => {
+
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const toggleDrawer = () => {
+        setDrawerOpen(!drawerOpen);
     };
 
-    toggleDrawer = () => {
-        this.setState({drawerOpen: !this.state.drawerOpen});
-    };
+    const showingDialog = props.dialogState.modalProps.open;
 
-    render() {
-        const {classes} = this.props;
-        const {drawerOpen} = this.state;
-        const showingDialog = this.props.dialogState.modalProps.open;
-
-        return (
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <TemporaryDrawer isOpen={drawerOpen} toggleDrawer={this.toggleDrawer}/>
-                        <Typography variant="title" color="inherit" className={classes.flex}>
-                            {this.props.title}
-                        </Typography>
-                        <FiltersLink {...this.props}/>
-                        <UserInfoComponent {...this.props}/>
-                        {showingDialog && <DeleteDialog {...this.props.dialogState}
-                                                        onConfirm={this.props.deleteCard}
-                                                        hideDeleteDialog={this.props.hideDeleteDialog}/>}
-                    </Toolbar>
-                </AppBar>
-            </div>
-        );
-    }
-}
+    return (
+        <div className={props.classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <TemporaryDrawer isOpen={drawerOpen} toggleDrawer={toggleDrawer}/>
+                    <Typography variant="title" color="inherit" className={props.classes.flex}>
+                        {props.title}
+                    </Typography>
+                    <FiltersLink {...props}/>
+                    <UserInfoComponent {...props}/>
+                    {showingDialog && <DeleteDialog {...props.dialogState}
+                                                    onConfirm={props.deleteCard}
+                                                    hideDeleteDialog={props.hideDeleteDialog}/>}
+                </Toolbar>
+            </AppBar>
+        </div>
+    );
+};
 
 MenuAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
