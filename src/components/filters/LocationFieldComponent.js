@@ -27,8 +27,6 @@ class LocationFieldComponent extends Component {
             value: viewValue && viewValue.formatted_address
         };
 
-        this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
-        this.onChange = this.onChange.bind(this);
     }
 
     onChange = (e) => {
@@ -66,10 +64,9 @@ class LocationFieldComponent extends Component {
         return (
             <FormControl >
                 <GooglePlaceAutocomplete
-
                     name="location"
                     label="Location"
-                    onSuggestionSelected={this.onSuggestionSelected}
+                    onSuggestionSelected={(v) => this.onSuggestionSelected(v)}
                     textFieldProps={{ onChange: (e) => this.onChange(e), value: this.state.value, placeholder: 'Search for a place'}}
                     types={['(regions)']}
                     renderTarget={() => (<div className={customStyle}/>)}
